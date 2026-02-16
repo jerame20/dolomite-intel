@@ -237,6 +237,30 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
     </div>
   </div>
 
+  <!-- ═══════ ANOMALIES ═══════ -->
+  <div class="section-label">⚡ Anomalies & Notable Activity</div>
+  <div class="grid">
+    <div class="card c-break full">
+      <h2>⚡ What Stuck Out This Week</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div>
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--red);margin-bottom:6px;">🔴 RATE ALERTS</p>
+          <p><strong>ETH USDC at 90% utilization</strong> — $110.7M TVL, withdrawals constrained. This is the tightest major stablecoin pool across all DeFi. Rate vol will persist until new supply enters.</p>
+          <p><strong>BERA WBERA at 67.2% supply APY</strong> — $1.7M TVL. Extremely high incentive rate on a volatile asset. This is what triggered the Feb 11 liquidation cascade.</p>
+          <p><strong>BERA iBERA at 153.7% APY / 98% util</strong> — Tiny pool ($100K) but maxed out. Someone really wants to borrow iBERA.</p>
+          <p><strong>BERA oriBGT at 105.6% APY</strong> — Berachain governance play. High incentives pulling in degens.</p>
+        </div>
+        <div>
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--purple);margin-bottom:6px;">📊 BIG MOVES (72H)</p>
+          <p><strong>Greninja deposited $5.68M USD1</strong> in 19 separate transactions — consistent, programmatic deposits every few hours. Vault curator behavior confirmed.</p>
+          <p><strong>Genesect churned $17.4M</strong> across 29 transactions — constant LST rebalancing (WBTC/USDC/weETH). Largest single move: $1.74M wstETH withdrawal followed immediately by $1.71M weETH deposit. Active leverage management.</p>
+          <p><strong>Toxtricity dropped $1.52M USDC</strong> in a single shot. Previous position was $7.5M — increasing exposure.</p>
+          <p><strong>Net capital flow: +$8.2M</strong> — protocol is growing. More money coming in than going out across all chains.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══════ WHALE WATCHING ═══════ -->
   <div class="section-label">🐋 Whale Watching Report</div>
   <div class="grid">
@@ -348,14 +372,29 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
     </div>
 
     <div class="card c-rate">
-      <h2>⚔️ vs Competitors (Supply APY)</h2>
-      <div class="rr"><span class="a">ETH USDC</span><span class="y" style="color:var(--text)">5.03%</span><span class="v">vs Aave 2.31%</span></div>
-      <div class="rr"><span class="a">ETH USDT</span><span class="y" style="color:var(--text)">3.39%</span><span class="v">vs Aave 1.81%</span></div>
-      <div class="rr"><span class="a">ARB USDC</span><span class="y" style="color:var(--text)">6.44%</span><span class="v">vs Aave 1.89%</span></div>
-      <p style="margin-top:10px;font-size:12px;"><strong>Marketing hooks:</strong></p>
-      <p style="font-size:12.5px;">🔵 "Double Aave's yield" on ETH USDC (5.0% vs 2.3%)</p>
-      <p style="font-size:12.5px;">🔵 "3× Aave's yield" on ARB USDC (6.4% vs 1.9%)</p>
-      <p style="font-size:12.5px;">🔵 Berachain stables for the degen crowd — 11-25% with real borrow demand</p>
+      <h2>⚔️ Dolomite vs Competitors</h2>
+      <div style="display:grid;grid-template-columns:auto 1fr auto auto;gap:0;font-size:12.5px;">
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);padding:4px 8px 4px 0;border-bottom:1px solid var(--line);">MARKET</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);padding:4px 8px;border-bottom:1px solid var(--line);text-align:right;">DOLOMITE</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);padding:4px 8px;border-bottom:1px solid var(--line);text-align:right;">AAVE</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);padding:4px 8px;border-bottom:1px solid var(--line);text-align:right;">EDGE</div>
+
+        <div style="padding:6px 8px 6px 0;font-weight:600;">ETH USDC</div>
+        <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:800;">5.03%</div>
+        <div style="padding:6px 8px;text-align:right;color:var(--muted);">2.31%</div>
+        <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:700;">2.2×</div>
+
+        <div style="padding:6px 8px 6px 0;font-weight:600;">ETH USDT</div>
+        <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:800;">3.39%</div>
+        <div style="padding:6px 8px;text-align:right;color:var(--muted);">1.81%</div>
+        <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:700;">1.9×</div>
+
+        <div style="padding:6px 8px 6px 0;font-weight:600;">ARB USDC</div>
+        <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:800;">6.44%</div>
+        <div style="padding:6px 8px;text-align:right;color:var(--muted);">1.89%</div>
+        <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:700;">3.4×</div>
+      </div>
+      <p style="margin-top:10px;font-size:12px;color:var(--muted);">Marketing: "Double Aave" (ETH USDC) · "3× Aave" (ARB USDC) · Berachain 11-25% for degens</p>
     </div>
 
   </div>
@@ -368,6 +407,9 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
       <div class="tweet"><span class="model">🟣 Opus — ETH USDC angle</span>Dolomite ETH USDC supply is 5.0% right now vs Aave ~2.3%. That's ~2.2× yield on one of the deepest stable markets in DeFi.</div>
       <div class="tweet"><span class="model">🟢 Codex — ARB USDC angle</span>Arbitrum USDC on Dolomite is ~6.4% supply vs Aave ~1.9%. That's ~3.4× the yield. Same asset, same chain, wildly different outcomes.</div>
       <div class="tweet"><span class="model">🔵 Gemini — Berachain angle</span>Berachain stables are spicy. Dolomite USDC supply ~11.4% and HONEY ~25% today. High incentives, real borrow demand, real volatility. Know your risk.</div>
+      <div class="tweet"><span class="model">🟣 Opus — TVL milestone</span>Dolomite just crossed $470M in total supply across Ethereum, Arbitrum, and Berachain. Real borrow demand. Real yields. No ponzi loops.</div>
+      <div class="tweet"><span class="model">🟢 Codex — Utilization angle</span>ETH USDC on Dolomite is at 90% utilization. That's not a bug — it's demand. 5% supply APY because borrowers actually want the capital.</div>
+      <div class="tweet"><span class="model">🔵 Gemini — USD1 angle</span>USD1 supply on Dolomite paying 7.2% APY on $167M TVL. Institutional-grade stablecoin yield backed by real borrow demand — not emissions, not points.</div>
     </div>
   </div>
 
@@ -391,9 +433,9 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
         </div>
         <div>
           <h3 style="color:var(--cyan)">Business Dev</h3>
-          <p><strong>1) Greninja / Re7 Labs</strong> — Confirm identity with Corey, then reach out directly. If Re7 is allocating to us programmatically, a formal relationship could 2-3× their allocation. <span class="tag">TOP PRIORITY</span></p>
-          <p><strong>2) Volcarona tracking</strong> — New $760K USD1 depositor. If they're another yield allocator following Greninja's path, catch them early.</p>
-          <p><strong>3) LST looper outreach</strong> — Genesect and Aegislash are power users running $19M in leverage. Proactive risk tooling = retention. Let them know we see them and we've got their back.</p>
+          <p><strong>1) Investigate Genesect + Aegislash</strong> — $19M combined in LST leverage. Identity unknown. Run the same Arkham/Etherscan trace we did for Greninja. Could be the same entity. <span class="tag">TOP PRIORITY</span></p>
+          <p><strong>2) Volcarona tracking</strong> — New USD1 depositor, $760K in 72h. If they're another yield allocator following Greninja's multi-protocol path, establish contact early before they scale.</p>
+          <p><strong>3) LST looper outreach</strong> — Once we identify Genesect/Aegislash, proactive risk tooling = retention play. These are power users running $19M in leverage. Let them know we see them.</p>
         </div>
       </div>
     </div>
@@ -406,16 +448,16 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
       <h2>🎯 Priority Outreach List</h2>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
         <div>
-          <p><strong>🥇 Greninja / Re7 Labs</strong></p>
-          <p style="font-size:12px;">$17.7M USD1 supply. Vault curator. Formal allocation relationship could funnel depositor capital automatically. Confirmation pending.</p>
+          <p><strong>🥇 Genesect</strong> (<a href="https://debank.com/profile/0x8be46b25d5b2ade9b12a63ec1a202d5f49a8e8a5" target="_blank">0x8be4</a>) <span class="tag-gold tag">INVESTIGATE</span></p>
+          <p style="font-size:12px;">$10.5M LST Leverage King. 29 txns in 72h — our most active power user. Identity unknown. Worth tracing through Arkham like we did with Greninja. High engagement potential + risk tooling as retention hook.</p>
         </div>
         <div>
-          <p><strong>🥈 Genesect</strong> (<a href="https://debank.com/profile/0x8be4" target="_blank">0x8be4</a>)</p>
-          <p style="font-size:12px;">$10.5M LST Leverage King. 29 txns in 72h. High activity = high engagement potential. Risk tooling as a retention hook.</p>
+          <p><strong>🥈 Aegislash</strong> (<a href="https://debank.com/profile/0x53cc1b407b5a0e65c7fdc2e85d7565210e3e0029" target="_blank">0x53cc</a>) <span class="tag-gold tag">INVESTIGATE</span></p>
+          <p style="font-size:12px;">$8.6M wstETH at 86% LTV. Same LST looper cohort as Genesect — possibly the same entity. Together they represent $19M in correlated LST exposure. Package deal outreach.</p>
         </div>
         <div>
-          <p><strong>🥉 Aegislash</strong> (<a href="https://debank.com/profile/0x53cc" target="_blank">0x53cc</a>)</p>
-          <p style="font-size:12px;">$8.6M wstETH at 86% LTV. Same cohort as Genesect. Package deal outreach.</p>
+          <p><strong>🥉 Volcarona</strong> (<a href="https://debank.com/profile/0xd480bb579f61edf044d0e86e33cb72310c816d6a" target="_blank">0xd480</a>) <span class="tag-green tag">NEW</span></p>
+          <p style="font-size:12px;">New USD1 depositor — $760K net inflow in 72h. Could be another yield allocator following Greninja's multi-protocol strategy. Catch them early before they scale.</p>
         </div>
       </div>
     </div>
