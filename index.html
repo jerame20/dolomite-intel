@@ -246,19 +246,19 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
         <div class="c-detail">15.8% util · 48 mkts · 54K users</div>
       </div>
       <div class="chain-card">
+        <div class="c-name">Botanix</div>
+        <div class="c-tvl">$7.9M</div>
+        <div class="c-detail">3.6% util · 5 mkts</div>
+      </div>
+      <div class="chain-card">
         <div class="c-name">Mantle</div>
         <div class="c-tvl">$0.09M</div>
         <div class="c-detail">22.2% util · 16 mkts · 2.3K users</div>
       </div>
       <div class="chain-card">
-        <div class="c-name">Base</div>
-        <div class="c-tvl">$0.00M</div>
-        <div class="c-detail">0% util · 1 mkt · 0 users</div>
-      </div>
-      <div class="chain-card">
-        <div class="c-name">X Layer</div>
-        <div class="c-tvl">$0.00M</div>
-        <div class="c-detail">0% util · 5 mkts · 265 users</div>
+        <div class="c-name">Polygon zkEVM</div>
+        <div class="c-tvl">$1.0M</div>
+        <div class="c-detail">0% util · 9 mkts</div>
       </div>
     </div>
   </div>
@@ -378,15 +378,22 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
   <div class="grid">
 
     <div class="card c-rate">
-      <h2>📈 Top Stablecoin Yields</h2>
-      <div class="rr"><span class="a">USD1 <span class="tag-chain tag-eth">ETH</span></span><span class="y">7.18%</span><span class="v">$167M TVL · 65.7% util</span></div>
-      <div class="rr"><span class="a">USDC <span class="tag-chain tag-arb">ARB</span></span><span class="y">6.44%</span><span class="v">$6.6M TVL · 56.0% util</span></div>
-      <div class="rr"><span class="a">USDC <span class="tag-chain tag-eth">ETH</span></span><span class="y">5.03%</span><span class="v">$110M TVL · 90.0% util</span></div>
-      <div class="rr"><span class="a">USDT <span class="tag-chain tag-arb">ARB</span></span><span class="y">4.00%</span><span class="v">$3.2M TVL · 65.1% util</span></div>
-      <div class="rr"><span class="a">USDT <span class="tag-chain tag-eth">ETH</span></span><span class="y">3.39%</span><span class="v">$4.4M TVL · 80.2% util</span></div>
-      <div class="rr"><span class="a">USDC <span class="tag-chain tag-bera">BERA</span></span><span class="y">11.39%</span><span class="v">🔥 $4.3M TVL</span></div>
-      <div class="rr"><span class="a">HONEY <span class="tag-chain tag-bera">BERA</span></span><span class="y">25.41%</span><span class="v">🔥🔥 $2.3M TVL</span></div>
-      <div class="rr"><span class="a">savUSD <span class="tag-chain tag-bera">BERA</span></span><span class="y">8.08%</span><span class="v">$6.6M TVL · 0% util</span></div>
+      <h2>📈 Top Stablecoin Yields (Supply APY)</h2>
+      <div id="rates-table">
+        <div class="rr" style="border-bottom:1px solid var(--line);margin-bottom:4px;padding-bottom:6px;cursor:pointer;" onclick="sortRates()">
+          <span class="a" style="font-size:10px;color:var(--muted);letter-spacing:0.5px;">TOKEN</span>
+          <span class="y" style="font-size:10px;color:var(--muted);letter-spacing:0.5px;" title="Click to sort">APY ↕</span>
+          <span class="v" style="font-size:10px;color:var(--muted);letter-spacing:0.5px;">TVL · UTIL</span>
+        </div>
+        <div class="rr" data-apy="25.41"><span class="a">HONEY <span class="tag-chain tag-bera">BERA</span></span><span class="y">25.41%</span><span class="v">$2.3M · —</span></div>
+        <div class="rr" data-apy="11.39"><span class="a">USDC <span class="tag-chain tag-bera">BERA</span></span><span class="y">11.39%</span><span class="v">$4.3M · —</span></div>
+        <div class="rr" data-apy="8.08"><span class="a">savUSD <span class="tag-chain tag-bera">BERA</span></span><span class="y">8.08%</span><span class="v">$6.6M · 0%</span></div>
+        <div class="rr" data-apy="7.18"><span class="a">USD1 <span class="tag-chain tag-eth">ETH</span></span><span class="y">7.18%</span><span class="v">$167M · 65.7%</span></div>
+        <div class="rr" data-apy="6.44"><span class="a">USDC <span class="tag-chain tag-arb">ARB</span></span><span class="y">6.44%</span><span class="v">$6.6M · 56.0%</span></div>
+        <div class="rr" data-apy="5.03"><span class="a">USDC <span class="tag-chain tag-eth">ETH</span></span><span class="y">5.03%</span><span class="v">$110M · 90.0%</span></div>
+        <div class="rr" data-apy="4.00"><span class="a">USDT <span class="tag-chain tag-arb">ARB</span></span><span class="y">4.00%</span><span class="v">$3.2M · 65.1%</span></div>
+        <div class="rr" data-apy="3.39"><span class="a">USDT <span class="tag-chain tag-eth">ETH</span></span><span class="y">3.39%</span><span class="v">$4.4M · 80.2%</span></div>
+      </div>
     </div>
 
     <div class="card c-rate">
@@ -594,6 +601,20 @@ function sendFb() {
   const name = document.getElementById('fb-name').value.trim();
   saveFeedback(fbSection, name, text);
   closeFb();
+}
+
+// Rates table sort
+let ratesAsc = false;
+function sortRates() {
+  const table = document.getElementById('rates-table');
+  const header = table.children[0];
+  const rows = Array.from(table.querySelectorAll('.rr[data-apy]'));
+  ratesAsc = !ratesAsc;
+  rows.sort((a,b) => ratesAsc
+    ? parseFloat(a.dataset.apy) - parseFloat(b.dataset.apy)
+    : parseFloat(b.dataset.apy) - parseFloat(a.dataset.apy));
+  rows.forEach(r => table.appendChild(r));
+  header.querySelector('.y').textContent = ratesAsc ? 'APY ↑' : 'APY ↓';
 }
 
 function submitGeneral() {
