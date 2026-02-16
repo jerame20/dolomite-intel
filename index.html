@@ -576,11 +576,11 @@ function saveFeedback(section, name, text) {
   const entry = { ts: new Date().toISOString(), section, name: name || 'Anonymous', text, report: 'Feb 16, 2026' };
   fb.push(entry);
   localStorage.setItem(FB_KEY, JSON.stringify(fb));
-  // Try webhook if configured
+  // Send to Google Sheet via Apps Script (GET with query params to avoid redirect issues)
   if (WEBHOOK_URL) {
-    fetch(WEBHOOK_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ section: entry.section, name: entry.name, feedback: entry.text, reportDate: entry.report })
-    }).catch(() => {});
+    const params = new URLSearchParams({ section: entry.section, name: entry.name, feedback: entry.text, reportDate: entry.report });
+    const img = new Image();
+    img.src = WEBHOOK_URL + '?' + params.toString();
   }
   // Show toast
   const toast = document.getElementById('fb-toast');
