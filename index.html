@@ -8,528 +8,435 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,800&family=Roboto+Mono:wght@400;500;700&display=swap');
 @font-face { font-family: Saans; font-style: normal; font-weight: 100 900; font-display: swap; src: url('https://dolomite.io/fonts/SaansVF.woff2') format('woff2'); }
 
-/* ----------------------------
-   THEME TOKENS (CSS VARIABLES)
-   ---------------------------- */
 :root {
-  --font-saans: Saans, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-sans: Inter, -apple-system, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-  --font-mono: 'Roboto Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-serif: 'Newsreader', ui-serif, Georgia, 'Times New Roman', Times, serif;
-
-  /* Dolomite defaults */
-  --bg: rgb(22, 20, 31);
-  --page-bg: rgb(22, 20, 31);
-  --text: rgb(230, 227, 247);
-  --muted: rgb(156, 153, 173);
-  --line: rgba(147, 128, 255, 0.18);
-  --shadow: 0 2px 8px rgba(0,0,0,0.25);
-
-  --masthead-border: 1px solid rgba(147, 128, 255, 0.3);
-  --masthead-title-font: var(--font-saans);
-  --masthead-title-weight: 380;
-  --masthead-title-size: 36px;
-  --masthead-sub-letter: 3px;
-
-  --hero-bg: linear-gradient(135deg, rgb(35, 32, 50) 0%, rgb(42, 40, 62) 100%);
-  --hero-text: rgb(230, 227, 247);
-
-  --card-bg: rgb(35, 32, 50);
-  --card-radius: 10px;
-  --card-pad: 16px;
+  --font-saans: Saans, system-ui, -apple-system, sans-serif;
+  --font-sans: Inter, -apple-system, system-ui, sans-serif;
+  --font-mono: 'Roboto Mono', 'JetBrains Mono', ui-monospace, monospace;
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+  --bg: rgb(22, 20, 31); --page-bg: rgb(22, 20, 31);
+  --text: rgb(230, 227, 247); --muted: rgb(156, 153, 173);
+  --line: rgba(147, 128, 255, 0.18); --shadow: 0 2px 8px rgba(0,0,0,0.25);
+  --card-bg: rgb(35, 32, 50); --card-radius: 10px; --card-pad: 16px;
   --card-border: rgba(147, 128, 255, 0.15);
-
-  --accent-break: rgb(147, 128, 255);
-  --accent-rate: rgb(66, 242, 191);
-  --accent-liq:  #ef4444;
-  --accent-whale: rgb(147, 128, 255);
-  --accent-risk: rgb(254, 202, 81);
-  --accent-bd:   rgb(27, 189, 251);
-  --accent-tweet: rgb(27, 189, 251);
-  --accent-action: rgb(182, 254, 81);
-
-  --chip-bg: rgba(147, 128, 255, 0.1);
-  --chip-text: rgb(147, 128, 255);
-
+  --purple: rgb(147, 128, 255); --green: rgb(66, 242, 191); --lime: rgb(182, 254, 81);
+  --gold: rgb(254, 202, 81); --cyan: rgb(27, 189, 251); --red: #ef4444; --pink: #f472b6;
   --link: rgb(147, 128, 255);
+  --chip-bg: rgba(147, 128, 255, 0.1); --chip-text: rgb(147, 128, 255);
 }
 
-/* Dolomite branded (default) */
-html[data-theme="dolomite"] body { font-family: var(--font-saans); font-weight: 380; }
-html[data-theme="dolomite"] .card h2 { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; }
-html[data-theme="dolomite"] .masthead .sub { font-family: var(--font-mono); }
-html[data-theme="dolomite"] .badge { font-family: var(--font-mono); }
-html[data-theme="dolomite"] .rr .a { font-family: var(--font-mono); font-size: 12px; }
-html[data-theme="dolomite"] .rr .y { color: rgb(182, 254, 81); }
-html[data-theme="dolomite"] .tag { font-family: var(--font-mono); border-radius: 4px; }
-html[data-theme="dolomite"] .hero { border: 1px solid rgba(147, 128, 255, 0.2); }
-html[data-theme="dolomite"] .hero-stat .num { font-weight: 500; }
-html[data-theme="dolomite"] .hero-div { background: rgba(147, 128, 255, 0.25); }
-html[data-theme="dolomite"] .actions-grid h3 { font-family: var(--font-mono); }
-html[data-theme="dolomite"] .footer { font-family: var(--font-mono); }
-html[data-theme="dolomite"] .tweet .model { font-family: var(--font-mono); }
-html[data-theme="dolomite"] select { background: rgb(53, 50, 73); color: rgb(230, 227, 247); border-color: rgba(147, 128, 255, 0.3); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: var(--font-saans); font-weight: 380; color: var(--text); background: var(--bg); }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-/* Newspaper */
-html[data-theme="newspaper"] {
-  --bg: #f8fafc;
-  --page-bg: transparent;
-  --text: #111827;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --shadow: 0 1px 3px rgba(0,0,0,0.06);
-  --masthead-border: 4px double #111827;
-  --masthead-title-font: var(--font-sans);
-  --masthead-title-weight: 900;
-  --masthead-title-size: 36px;
-  --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-  --hero-text: #ffffff;
-  --card-bg: #ffffff;
-  --card-border: #e5e7eb;
-  --accent-break: #ec4899;
-  --accent-rate: #10b981;
-  --accent-liq: #ef4444;
-  --accent-whale: #6366f1;
-  --accent-risk: #f97316;
-  --accent-bd: #8b5cf6;
-  --accent-tweet: #0ea5e9;
-  --accent-action: #eab308;
-  --chip-bg: #eef2ff;
-  --chip-text: #3730a3;
-  --link: #2563eb;
-}
-html[data-theme="newspaper"] body { font-family: var(--font-sans); font-weight: 400; }
-html[data-theme="newspaper"] .card h2 { font-family: var(--font-sans); }
-html[data-theme="newspaper"] .rr .y { color: #059669; }
-html[data-theme="newspaper"] select { background: #fff; color: #111; border-color: #e5e7eb; }
+.page { max-width: 1040px; margin: 0 auto; padding: 20px 20px 40px; }
 
-/* Bloomberg site-ish: dense, gray, sharp */
-html[data-theme="bloomberg"] {
-  --bg: #f3f4f6;
-  --page-bg: transparent;
-  --text: #0b0f19;
-  --muted: #4b5563;
-  --line: #d1d5db;
-  --shadow: 0 0 0 rgba(0,0,0,0);
-  --masthead-border: 1px solid #111827;
-  --masthead-title-font: var(--font-sans);
-  --masthead-title-weight: 900;
-  --masthead-title-size: 30px;
-  --hero-bg: linear-gradient(135deg, #111827 0%, #0b0f19 100%);
-  --hero-text: #fff;
-  --card-bg: #fff;
-  --card-border: #d1d5db;
-  --card-radius: 6px;
-  --card-pad: 14px;
-  --accent-break: #ec4899;
-  --accent-rate: #10b981;
-  --accent-liq: #ef4444;
-  --accent-whale: #6366f1;
-  --accent-risk: #f97316;
-  --accent-bd: #8b5cf6;
-  --accent-tweet: #0ea5e9;
-  --accent-action: #eab308;
-  --chip-bg: #eef2ff;
-  --chip-text: #3730a3;
-  --link: #2563eb;
-}
-html[data-theme="bloomberg"] body { font-family: var(--font-sans); font-weight: 400; }
-html[data-theme="bloomberg"] .card h2 { font-family: var(--font-sans); }
-html[data-theme="bloomberg"] .rr .y { color: #059669; }
-html[data-theme="bloomberg"] select { background: #fff; color: #111; border-color: #d1d5db; }
+/* TOPBAR */
+.topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.badges { display:flex; gap:8px; flex-wrap:wrap; }
+.badge { font-family:var(--font-mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; padding:5px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); }
+select { font-family:var(--font-mono); font-size:11px; padding:6px 10px; border:1px solid rgba(147,128,255,0.3); border-radius:8px; background:rgb(53,50,73); color:var(--text); }
 
-/* Bloomberg Terminal: black, green, mono, ultra dense */
-html[data-theme="terminal"] {
-  --bg: #070a0f;
-  --page-bg: #070a0f;
-  --text: #d1fae5;
-  --muted: #5eead4;
-  --line: rgba(94,234,212,0.25);
-  --shadow: 0 0 0 rgba(0,0,0,0);
-  --masthead-border: 1px solid rgba(94,234,212,0.45);
-  --masthead-title-font: var(--font-mono);
-  --masthead-title-weight: 800;
-  --masthead-title-size: 28px;
-  --hero-bg: linear-gradient(135deg, #04110d 0%, #0b2a21 100%);
-  --hero-text: #d1fae5;
-  --card-bg: #070a0f;
-  --card-border: rgba(94,234,212,0.35);
-  --card-radius: 0px;
-  --card-pad: 12px;
-  --link: #34d399;
+/* MASTHEAD */
+.masthead { text-align:center; border-bottom:1px solid rgba(147,128,255,0.3); padding-bottom:10px; margin-bottom:16px; }
+.masthead h1 { font-size:38px; font-weight:380; letter-spacing:-1px; line-height:1; }
+.masthead .sub { font-family:var(--font-mono); font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:3px; margin-top:4px; }
+.masthead .meta { font-size:11px; color:var(--muted); margin-top:6px; }
 
-  --accent-break: #34d399;
-  --accent-rate: #34d399;
-  --accent-liq:  #34d399;
-  --accent-whale:#34d399;
-  --accent-risk: #34d399;
-  --accent-bd:   #34d399;
-  --accent-tweet:#34d399;
-  --accent-action:#34d399;
+/* HERO: TVL BREAKDOWN */
+.hero { background: linear-gradient(135deg, rgb(35,32,50) 0%, rgb(42,40,62) 100%); border:1px solid rgba(147,128,255,0.2); border-radius:12px; padding:18px 16px; margin-bottom:16px; }
+.hero-top { display:flex; justify-content:space-around; text-align:center; margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid rgba(147,128,255,0.15); }
+.hero-stat .num { font-size:28px; font-weight:500; }
+.hero-stat .label { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--muted); margin-top:2px; }
+.chain-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; }
+.chain-card { background:rgba(147,128,255,0.06); border:1px solid rgba(147,128,255,0.1); border-radius:8px; padding:10px 8px; text-align:center; cursor:default; transition:border-color 0.2s; }
+.chain-card:hover { border-color:rgba(147,128,255,0.4); }
+.chain-card .c-name { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted); margin-bottom:4px; }
+.chain-card .c-tvl { font-size:16px; font-weight:500; }
+.chain-card .c-detail { font-family:var(--font-mono); font-size:9px; color:var(--muted); margin-top:3px; }
+.chain-card.top { border-color:rgba(147,128,255,0.35); background:rgba(147,128,255,0.1); }
 
-  --chip-bg: rgba(52,211,153,0.12);
-  --chip-text: #34d399;
+/* GRID */
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+.full { grid-column:1/-1; }
+.span3 { grid-column:1/-1; }
+
+/* CARDS */
+.card { background:var(--card-bg); border-radius:var(--card-radius); padding:var(--card-pad); border:1px solid var(--card-border); border-left:4px solid var(--card-border); box-shadow:var(--shadow); }
+.card h2 { font-family:var(--font-mono); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+.card p { font-size:13px; line-height:1.6; color:color-mix(in oklab,var(--text) 82%,transparent); margin-bottom:6px; }
+.card p:last-child { margin-bottom:0; }
+
+/* CARD ACCENTS */
+.c-whale h2 { color:var(--purple); } .c-whale { border-left-color:var(--purple); }
+.c-liq h2 { color:var(--red); } .c-liq { border-left-color:var(--red); }
+.c-rate h2 { color:var(--green); } .c-rate { border-left-color:var(--green); }
+.c-break h2 { color:var(--pink); } .c-break { border-left-color:var(--pink); }
+.c-action h2 { color:var(--lime); } .c-action { border-left-color:var(--lime); }
+.c-tweet h2 { color:var(--cyan); } .c-tweet { border-left-color:var(--cyan); }
+.c-risk h2 { color:var(--gold); } .c-risk { border-left-color:var(--gold); }
+.c-bd h2 { color:var(--cyan); } .c-bd { border-left-color:var(--cyan); }
+
+/* WHALE NARRATIVE */
+.whale-entry { padding:10px 0; border-bottom:1px solid rgba(147,128,255,0.1); }
+.whale-entry:last-child { border:none; }
+.whale-name { font-weight:600; font-size:14px; }
+.whale-name a { color:var(--purple); }
+.whale-detail { font-size:12.5px; color:var(--muted); line-height:1.6; margin-top:4px; }
+
+/* TAGS */
+.tag { display:inline-block; font-family:var(--font-mono); font-size:9px; font-weight:700; padding:2px 7px; border-radius:4px; background:var(--chip-bg); color:var(--chip-text); letter-spacing:0.3px; vertical-align:middle; border:1px solid color-mix(in oklab,var(--chip-text) 25%,transparent); }
+.tag-red { background:rgba(239,68,68,0.1); color:#ef4444; border-color:rgba(239,68,68,0.3); }
+.tag-green { background:rgba(66,242,191,0.1); color:var(--green); border-color:rgba(66,242,191,0.3); }
+.tag-gold { background:rgba(254,202,81,0.1); color:var(--gold); border-color:rgba(254,202,81,0.3); }
+
+/* RATE TABLE */
+.rr { display:flex; justify-content:space-between; align-items:baseline; padding:4px 0; border-bottom:1px solid rgba(147,128,255,0.08); font-size:12.5px; }
+.rr:last-of-type { border:none; }
+.rr .a { font-family:var(--font-mono); font-weight:700; font-size:12px; flex:1; }
+.rr .y { font-weight:900; width:70px; text-align:right; color:var(--lime); }
+.rr .v { width:120px; text-align:right; font-size:11px; color:var(--muted); }
+
+/* LIQUIDATION TABLE */
+.liq-row { display:flex; gap:12px; padding:6px 0; border-bottom:1px solid rgba(147,128,255,0.08); font-size:12px; align-items:center; }
+.liq-row:last-child { border:none; }
+.liq-bot { font-family:var(--font-mono); font-size:11px; }
+
+/* TWEET */
+.tweet { background:rgba(147,128,255,0.04); border:1px solid rgba(147,128,255,0.1); border-radius:8px; padding:10px 12px; margin-bottom:8px; font-size:12.5px; line-height:1.5; }
+.tweet:last-of-type { margin-bottom:0; }
+.tweet .model { font-family:var(--font-mono); font-size:10px; color:var(--muted); display:block; margin-bottom:3px; }
+
+/* 3-COL */
+.actions-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+.actions-grid h3 { font-family:var(--font-mono); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; }
+.actions-grid p { font-size:12.5px; line-height:1.5; margin-bottom:5px; }
+
+/* FLOW METER */
+.flow-bar { display:flex; height:24px; border-radius:6px; overflow:hidden; margin:8px 0; }
+.flow-in { background:var(--green); }
+.flow-out { background:var(--red); opacity:0.7; }
+.flow-labels { display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--muted); }
+
+/* FOOTER */
+.footer { text-align:center; font-family:var(--font-mono); font-size:10px; color:var(--muted); border-top:1px solid var(--line); padding-top:12px; margin-top:18px; }
+.footer span { margin:0 8px; }
+
+/* SECTION DIVIDER */
+.section-label { font-family:var(--font-mono); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin:20px 0 10px; padding-left:4px; }
+
+@media (max-width:800px) {
+  .grid { grid-template-columns:1fr; }
+  .actions-grid { grid-template-columns:1fr; }
+  .hero-top { flex-wrap:wrap; gap:12px; }
+  .chain-grid { grid-template-columns:repeat(3,1fr); }
 }
 
-/* AltaVista-ish: retro, serif headline, chunky borders */
-html[data-theme="altavista"] {
-  --bg: #fff7ed; --page-bg: transparent;
-  --text: #1f2937; --muted: #6b7280;
-  --line: #111827; --shadow: 0 0 0 rgba(0,0,0,0);
-  --masthead-border: 3px solid #111827;
-  --masthead-title-font: var(--font-serif);
-  --masthead-title-weight: 800; --masthead-title-size: 34px;
-  --hero-bg: linear-gradient(135deg, #1f2937 0%, #111827 100%); --hero-text: #fff;
-  --card-bg: #fff7ed; --card-radius: 0px; --card-border: #111827; --card-pad: 14px;
-  --link: #b91c1c;
-  --accent-break: #b91c1c; --accent-rate: #065f46; --accent-liq: #b91c1c;
-  --accent-whale: #1d4ed8; --accent-risk: #92400e; --accent-bd: #6d28d9;
-  --accent-tweet: #0e7490; --accent-action: #92400e;
-  --chip-bg: #fef3c7; --chip-text: #92400e;
-}
-html[data-theme="altavista"] body { font-family: var(--font-sans); font-weight: 400; }
-html[data-theme="altavista"] .rr .y { color: #065f46; }
-html[data-theme="altavista"] select { background: #fff7ed; color: #1f2937; border-color: #111827; }
+/* THEME OVERRIDES */
+html[data-theme="newspaper"] { --bg:#f8fafc; --page-bg:transparent; --text:#111827; --muted:#6b7280; --line:#e5e7eb; --shadow:0 1px 3px rgba(0,0,0,0.06); --card-bg:#fff; --card-border:#e5e7eb; --purple:#6366f1; --green:#10b981; --lime:#059669; --gold:#f59e0b; --cyan:#0ea5e9; --red:#ef4444; --pink:#ec4899; --link:#2563eb; --chip-bg:#eef2ff; --chip-text:#3730a3; }
+html[data-theme="newspaper"] body { font-family:var(--font-sans); font-weight:400; }
+html[data-theme="newspaper"] .masthead { border-bottom:4px double #111827; }
+html[data-theme="newspaper"] .masthead h1 { font-family:var(--font-sans); font-weight:900; }
+html[data-theme="newspaper"] .hero { background:linear-gradient(135deg,#0f172a,#1e3a5f); color:#fff; border:none; }
+html[data-theme="newspaper"] .hero-stat .num { color:#fff; }
+html[data-theme="newspaper"] .chain-card { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.15); }
+html[data-theme="newspaper"] .chain-card .c-name, html[data-theme="newspaper"] .chain-card .c-detail { color:rgba(255,255,255,0.6); }
+html[data-theme="newspaper"] .chain-card .c-tvl { color:#fff; }
+html[data-theme="newspaper"] select { background:#fff; color:#111; border-color:#e5e7eb; }
 
-/* Minimal: ultra-clean */
-html[data-theme="minimal"] {
-  --bg: #ffffff; --page-bg: transparent;
-  --text: #111827; --muted: #6b7280;
-  --line: #e5e7eb; --shadow: 0 8px 22px rgba(0,0,0,0.06);
-  --masthead-border: 0;
-  --masthead-title-font: var(--font-sans); --masthead-title-weight: 900;
-  --hero-bg: linear-gradient(135deg, #111827 0%, #374151 100%); --hero-text: #fff;
-  --card-bg: #ffffff; --card-border: #e5e7eb; --card-radius: 12px;
-  --accent-break: #ec4899; --accent-rate: #10b981; --accent-liq: #ef4444;
-  --accent-whale: #6366f1; --accent-risk: #f97316; --accent-bd: #8b5cf6;
-  --accent-tweet: #0ea5e9; --accent-action: #eab308;
-  --chip-bg: #eef2ff; --chip-text: #3730a3; --link: #2563eb;
-}
-html[data-theme="minimal"] body { font-family: var(--font-sans); font-weight: 400; }
-html[data-theme="minimal"] .rr .y { color: #059669; }
-html[data-theme="minimal"] select { background: #fff; color: #111; border-color: #e5e7eb; }
+html[data-theme="terminal"] { --bg:#070a0f; --page-bg:#070a0f; --text:#d1fae5; --muted:#5eead4; --line:rgba(94,234,212,0.25); --shadow:none; --card-bg:#070a0f; --card-border:rgba(94,234,212,0.35); --card-radius:0; --purple:#34d399; --green:#34d399; --lime:#34d399; --gold:#34d399; --cyan:#34d399; --red:#34d399; --pink:#34d399; --link:#34d399; --chip-bg:rgba(52,211,153,0.12); --chip-text:#34d399; }
+html[data-theme="terminal"] body { font-family:var(--font-mono); }
+html[data-theme="terminal"] .masthead { border-bottom:1px solid rgba(94,234,212,0.45); }
+html[data-theme="terminal"] .masthead h1 { font-family:var(--font-mono); font-weight:800; font-size:28px; letter-spacing:0.5px; }
+html[data-theme="terminal"] .hero { background:linear-gradient(135deg,#04110d,#0b2a21); border-color:rgba(94,234,212,0.3); }
+html[data-theme="terminal"] select { background:transparent; border-radius:0; }
 
-/* Financial Times: salmon pink, serif headlines, authoritative */
-html[data-theme="ft"] {
-  --bg: #fff1e5; --page-bg: transparent;
-  --text: #33302e; --muted: #73655e;
-  --line: #e0cdbf; --shadow: 0 1px 2px rgba(0,0,0,0.04);
-  --masthead-border: 2px solid #33302e;
-  --masthead-title-font: var(--font-serif);
-  --masthead-title-weight: 800; --masthead-title-size: 34px; --masthead-sub-letter: 2px;
-  --hero-bg: linear-gradient(135deg, #262a33 0%, #1a1a2e 100%); --hero-text: #fff;
-  --card-bg: #fff9f2; --card-border: #e0cdbf; --card-radius: 4px; --card-pad: 14px;
-  --link: #0d7680;
-  --accent-break: #c00; --accent-rate: #0d7680; --accent-liq: #c00;
-  --accent-whale: #0f5499; --accent-risk: #a0522d; --accent-bd: #593380;
-  --accent-tweet: #0d7680; --accent-action: #8b6914;
-  --chip-bg: rgba(13,118,128,0.08); --chip-text: #0d7680;
-}
-html[data-theme="ft"] body { font-family: var(--font-sans); font-weight: 400; }
-html[data-theme="ft"] .masthead h1 { font-family: var(--font-serif); }
-html[data-theme="ft"] .rr .y { color: #0d7680; }
-html[data-theme="ft"] select { background: #fff9f2; color: #33302e; border-color: #e0cdbf; }
+html[data-theme="ft"] { --bg:#fff1e5; --page-bg:transparent; --text:#33302e; --muted:#73655e; --line:#e0cdbf; --shadow:0 1px 2px rgba(0,0,0,0.04); --card-bg:#fff9f2; --card-border:#e0cdbf; --card-radius:4px; --purple:#0f5499; --green:#0d7680; --lime:#0d7680; --gold:#8b6914; --cyan:#0d7680; --red:#c00; --pink:#c00; --link:#0d7680; --chip-bg:rgba(13,118,128,0.08); --chip-text:#0d7680; }
+html[data-theme="ft"] body { font-family:var(--font-sans); font-weight:400; }
+html[data-theme="ft"] .masthead h1 { font-family:var(--font-serif); font-weight:800; }
+html[data-theme="ft"] .masthead { border-bottom:2px solid #33302e; }
+html[data-theme="ft"] .hero { background:linear-gradient(135deg,#262a33,#1a1a2e); color:#fff; border:none; }
+html[data-theme="ft"] .hero-stat .num { color:#fff; }
+html[data-theme="ft"] .chain-card { background:rgba(255,255,255,0.05); }
+html[data-theme="ft"] .chain-card .c-tvl { color:#fff; }
+html[data-theme="ft"] select { background:#fff9f2; color:#33302e; border-color:#e0cdbf; }
 
-/* Drudge Report: stark, monospace, no frills, all signal */
-html[data-theme="drudge"] {
-  --bg: #ffffff; --page-bg: transparent;
-  --text: #000000; --muted: #555;
-  --line: #000; --shadow: 0 0 0 transparent;
-  --masthead-border: 3px solid #000;
-  --masthead-title-font: var(--font-mono); --masthead-title-weight: 900;
-  --masthead-title-size: 32px; --masthead-sub-letter: 4px;
-  --hero-bg: #000; --hero-text: #fff;
-  --card-bg: #fff; --card-border: #ccc; --card-radius: 0; --card-pad: 12px;
-  --link: #c00;
-  --accent-break: #c00; --accent-rate: #006600; --accent-liq: #c00;
-  --accent-whale: #000080; --accent-risk: #c00; --accent-bd: #660066;
-  --accent-tweet: #006; --accent-action: #660;
-  --chip-bg: #f0f0f0; --chip-text: #c00;
-}
-html[data-theme="drudge"] body { font-family: var(--font-mono); font-size: 12px; font-weight: 400; }
-html[data-theme="drudge"] .hero { border-radius: 0; }
-html[data-theme="drudge"] .card h2 { font-size: 14px; letter-spacing: 0; text-decoration: underline; font-family: var(--font-mono); }
-html[data-theme="drudge"] .rr .y { color: #006600; }
-html[data-theme="drudge"] select { background: #fff; color: #000; border-color: #000; }
-
-/* Hacker News: beige, minimal, link-list feel */
-html[data-theme="hackernews"] {
-  --bg: #f6f6ef; --page-bg: transparent;
-  --text: #000; --muted: #828282;
-  --line: #e0d8ce; --shadow: 0 0 0 transparent;
-  --masthead-border: 2px solid #ff6600;
-  --masthead-title-font: var(--font-sans); --masthead-title-weight: 700;
-  --masthead-title-size: 28px; --masthead-sub-letter: 1px;
-  --hero-bg: #ff6600; --hero-text: #fff;
-  --card-bg: #f6f6ef; --card-border: #e0d8ce; --card-radius: 2px; --card-pad: 12px;
-  --link: #000;
-  --accent-break: #ff6600; --accent-rate: #000; --accent-liq: #ff6600;
-  --accent-whale: #000; --accent-risk: #ff6600; --accent-bd: #000;
-  --accent-tweet: #000; --accent-action: #ff6600;
-  --chip-bg: rgba(255,102,0,0.1); --chip-text: #ff6600;
-}
-html[data-theme="hackernews"] body { font-family: var(--font-sans); font-weight: 400; }
-html[data-theme="hackernews"] .hero { border-radius: 2px; }
-html[data-theme="hackernews"] .card { border-left-width: 3px; }
-html[data-theme="hackernews"] .rr .y { color: #000; font-weight: 900; }
-html[data-theme="hackernews"] select { background: #f6f6ef; color: #000; border-color: #e0d8ce; }
-
-/* Cyberpunk: neon purple/pink on dark, sci-fi feel */
-html[data-theme="cyberpunk"] {
-  --bg: #0d0221;
-  --page-bg: #0d0221;
-  --text: #e0d4f7;
-  --muted: #a78bfa;
-  --line: rgba(167,139,250,0.25);
-  --shadow: 0 0 12px rgba(167,139,250,0.08);
-  --masthead-border: 1px solid rgba(236,72,153,0.5);
-  --masthead-title-font: var(--font-mono);
-  --masthead-title-weight: 900;
-  --masthead-title-size: 30px;
-  --masthead-sub-letter: 4px;
-  --hero-bg: linear-gradient(135deg, #1a0533 0%, #2d0a4e 50%, #0d0221 100%);
-  --hero-text: #f0abfc;
-  --card-bg: rgba(13,2,33,0.8);
-  --card-border: rgba(167,139,250,0.3);
-  --card-radius: 2px;
-  --card-pad: 14px;
-  --link: #f472b6;
-  --accent-break: #f472b6;
-  --accent-rate: #34d399;
-  --accent-liq: #fb7185;
-  --accent-whale: #a78bfa;
-  --accent-risk: #fbbf24;
-  --accent-bd: #c084fc;
-  --accent-tweet: #67e8f9;
-  --accent-action: #fbbf24;
-  --chip-bg: rgba(244,114,182,0.12);
-  --chip-text: #f472b6;
-}
-html[data-theme="cyberpunk"] body { font-family: var(--font-mono); }
-html[data-theme="cyberpunk"] .hero-stat .num { text-shadow: 0 0 12px rgba(244,114,182,0.4); }
-html[data-theme="cyberpunk"] .masthead h1 { background: linear-gradient(90deg, #f472b6, #a78bfa, #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-/* ----------------------------
-   BASE LAYOUT
-   ---------------------------- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: var(--font-sans); color: var(--text); background: var(--bg); }
-.page { max-width: 980px; margin: 0 auto; padding: 20px 18px 32px; background: var(--page-bg); }
-
-/* Topbar */
-.topbar { display:flex; align-items:center; justify-content:space-between; gap: 12px; margin-bottom: 14px; }
-.topbar .left { display:flex; align-items:center; gap:10px; }
-.badge { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,0.35); }
-html[data-theme="terminal"] .badge { background: transparent; }
-
-.theme-chooser { display:flex; align-items:center; gap: 8px; }
-.theme-chooser label { font-size: 11px; color: var(--muted); }
-select { font-size: 12px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card-bg); color: var(--text); }
-html[data-theme="terminal"] select { border-radius:0; }
-
-/* Masthead */
-.masthead { text-align: center; border-bottom: var(--masthead-border); padding-bottom: 10px; margin-bottom: 16px; }
-.masthead h1 { font-family: var(--masthead-title-font); font-size: var(--masthead-title-size); font-weight: var(--masthead-title-weight); letter-spacing: -1.5px; line-height: 1; }
-.masthead .sub { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: var(--masthead-sub-letter); margin-top: 4px; }
-.masthead .meta { font-size: 11px; color: var(--muted); margin-top: 6px; }
-.masthead a { color: var(--link); text-decoration: none; }
-
-/* Hero */
-.hero { background: var(--hero-bg); color: var(--hero-text); padding: 16px 20px; border-radius: 12px; margin-bottom: 14px; display: flex; justify-content: space-around; align-items: center; box-shadow: var(--shadow); }
-.hero-stat { text-align: center; }
-.hero-stat .num { font-size: 26px; font-weight: 800; line-height: 1.1; }
-.hero-stat .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.6; margin-top: 2px; }
-.hero-div { width: 1px; height: 44px; background: rgba(255,255,255,0.15); }
-html[data-theme="terminal"] .hero-div { background: rgba(52,211,153,0.25); }
-
-/* Grid */
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.full { grid-column: 1 / -1; }
-
-/* Cards */
-.card { background: var(--card-bg); border-radius: var(--card-radius); padding: var(--card-pad); border: 1px solid var(--card-border); border-left: 4px solid var(--card-border); box-shadow: var(--shadow); }
-.card h2 { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 8px; }
-.card p { font-size: 12.5px; line-height: 1.55; color: color-mix(in oklab, var(--text) 78%, transparent); margin-bottom: 6px; }
-.card p:last-child { margin-bottom: 0; }
-.card a { color: var(--link); text-decoration: none; }
-.card a:hover { text-decoration: underline; }
-
-/* Card accents */
-.c-break { border-left-color: var(--accent-break); }
-.c-rate  { border-left-color: var(--accent-rate); }
-.c-liq   { border-left-color: var(--accent-liq); }
-.c-whale { border-left-color: var(--accent-whale); }
-.c-risk  { border-left-color: var(--accent-risk); }
-.c-bd    { border-left-color: var(--accent-bd); }
-.c-tweet { border-left-color: var(--accent-tweet); }
-.c-action{ border-left-color: var(--accent-action); }
-
-html[data-theme="terminal"] .card { border-left-width: 1px; }
-
-/* Chips/tags */
-.tag { display:inline-block; font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 5px; background: var(--chip-bg); color: var(--chip-text); letter-spacing: 0.3px; vertical-align: middle; border: 1px solid color-mix(in oklab, var(--chip-text) 25%, transparent); }
-html[data-theme="terminal"] .tag { border-radius: 0; }
-
-/* Rate rows */
-.rr { display:flex; justify-content:space-between; align-items:baseline; padding: 4px 0; border-bottom: 1px solid color-mix(in oklab, var(--line) 55%, transparent); font-size: 12.5px; }
-.rr:last-of-type { border: none; }
-.rr .a { font-weight: 800; flex: 1; }
-.rr .y { font-weight: 900; width: 70px; text-align:right; color: var(--accent-rate); }
-.rr .v { width: 112px; text-align:right; font-size: 11px; color: var(--muted); }
-
-/* Tweet boxes */
-.tweet { background: color-mix(in oklab, var(--card-bg) 92%, var(--line)); border: 1px solid color-mix(in oklab, var(--line) 70%, transparent); border-radius: 8px; padding: 9px 12px; margin-bottom: 7px; font-size: 12px; line-height: 1.5; }
-.tweet:last-of-type { margin-bottom: 0; }
-.tweet .model { font-size: 10px; opacity: 0.7; margin-bottom: 3px; display:block; }
-
-/* Actions grid */
-.actions-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-.actions-grid h3 { font-size: 12px; font-weight: 900; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
-.actions-grid p { font-size: 12px; line-height: 1.5; margin-bottom: 4px; }
-
-/* Footer */
-.footer { text-align:center; font-size: 10px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; margin-top: 16px; }
-.footer span { margin: 0 8px; }
-
-/* Responsive */
-@media (max-width: 740px) {
-  .grid { grid-template-columns: 1fr; }
-  .actions-grid { grid-template-columns: 1fr; }
-  .hero { flex-wrap: wrap; gap: 10px; }
-  .hero-div { display:none; }
-  .topbar { flex-direction: column; align-items: flex-start; }
-}
-
-/* Terminal extra tweaks */
-html[data-theme="terminal"] body { font-family: var(--font-mono); }
-html[data-theme="terminal"] .masthead h1 { letter-spacing: 0.5px; }
-html[data-theme="terminal"] .card h2 { letter-spacing: 1px; }
-html[data-theme="terminal"] .masthead a { text-decoration: underline; }
+html[data-theme="cyberpunk"] { --bg:#0d0221; --page-bg:#0d0221; --text:#e0d4f7; --muted:#a78bfa; --line:rgba(167,139,250,0.25); --shadow:0 0 12px rgba(167,139,250,0.08); --card-bg:rgba(13,2,33,0.8); --card-border:rgba(167,139,250,0.3); --card-radius:2px; --purple:#c084fc; --green:#34d399; --lime:#34d399; --gold:#fbbf24; --cyan:#67e8f9; --red:#fb7185; --pink:#f472b6; --link:#f472b6; --chip-bg:rgba(244,114,182,0.12); --chip-text:#f472b6; }
+html[data-theme="cyberpunk"] body { font-family:var(--font-mono); }
+html[data-theme="cyberpunk"] .masthead h1 { font-family:var(--font-mono); font-weight:900; background:linear-gradient(90deg,#f472b6,#a78bfa,#67e8f9); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+html[data-theme="cyberpunk"] .hero { background:linear-gradient(135deg,#1a0533,#2d0a4e,#0d0221); border-color:rgba(167,139,250,0.3); }
+html[data-theme="cyberpunk"] .hero-stat .num { text-shadow:0 0 12px rgba(244,114,182,0.4); }
+html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color:rgba(167,139,250,0.3); }
 </style>
 </head>
 <body>
 <div class="page">
 
   <div class="topbar">
-    <div class="left">
+    <div class="badges">
       <span class="badge">Internal · Feb 16, 2026</span>
       <span class="badge">🟣 Opus · 🟢 Codex · 🔵 Gemini</span>
     </div>
-
-    <div class="theme-chooser">
-      <label for="theme">Style</label>
-      <select id="theme" name="theme">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <label for="theme" style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">Style</label>
+      <select id="theme">
         <option value="dolomite">◆ Dolomite</option>
         <option value="newspaper">📰 Newspaper</option>
-        <option value="bloomberg">📊 Bloomberg</option>
         <option value="terminal">🖥️ Terminal</option>
         <option value="ft">📋 Financial Times</option>
-        <option value="minimal">✨ Minimal</option>
         <option value="cyberpunk">💜 Cyberpunk</option>
-        <option value="altavista">🔍 AltaVista</option>
-        <option value="drudge">🚨 Drudge Report</option>
-        <option value="hackernews">🟠 Hacker News</option>
       </select>
     </div>
   </div>
 
   <div class="masthead">
     <h1>DOLOMITE INTELLIGENCE</h1>
-    <div class="sub">3-Model Synthesis · Internal</div>
-    <div class="meta">
-      February 16, 2026 &nbsp;|&nbsp;
-      <a href="https://docs.google.com/spreadsheets/d/17FPVWjpq3vZ8vVCWwLaJvrybq597pNQvCfCTmTxN25A" target="_blank" rel="noreferrer">Whale Registry ↗</a>
-      &nbsp;|&nbsp; Public briefing mirror
+    <div class="sub">3-Model Synthesis · Core Team Brief</div>
+    <div class="meta">February 16, 2026 &nbsp;|&nbsp; <a href="https://docs.google.com/spreadsheets/d/17FPVWjpq3vZ8vVCWwLaJvrybq597pNQvCfCTmTxN25A" target="_blank">Whale Registry ↗</a></div>
+  </div>
+
+  <!-- ═══════ TVL HERO WITH CHAIN BREAKDOWN ═══════ -->
+  <div class="hero">
+    <div class="hero-top">
+      <div class="hero-stat"><div class="num">$473.7M</div><div class="label">Total Supply</div></div>
+      <div class="hero-stat"><div class="num">$260.1M</div><div class="label">Total Borrow</div></div>
+      <div class="hero-stat"><div class="num">54.9%</div><div class="label">Utilization</div></div>
+      <div class="hero-stat"><div class="num">106,223</div><div class="label">Total Users</div></div>
+    </div>
+    <div class="chain-grid">
+      <div class="chain-card top">
+        <div class="c-name">Ethereum</div>
+        <div class="c-tvl">$371.9M</div>
+        <div class="c-detail">64.4% util · 21 mkts · 1.8K users</div>
+      </div>
+      <div class="chain-card">
+        <div class="c-name">Arbitrum</div>
+        <div class="c-tvl">$52.0M</div>
+        <div class="c-detail">24.5% util · 75 mkts · 50K users</div>
+      </div>
+      <div class="chain-card">
+        <div class="c-name">Berachain</div>
+        <div class="c-tvl">$49.7M</div>
+        <div class="c-detail">15.8% util · 48 mkts · 54K users</div>
+      </div>
+      <div class="chain-card">
+        <div class="c-name">Mantle</div>
+        <div class="c-tvl">—</div>
+        <div class="c-detail">Live · data pending</div>
+      </div>
+      <div class="chain-card">
+        <div class="c-name">Base</div>
+        <div class="c-tvl">—</div>
+        <div class="c-detail">Live · data pending</div>
+      </div>
+      <div class="chain-card">
+        <div class="c-name">X Layer</div>
+        <div class="c-tvl">—</div>
+        <div class="c-detail">Live · data pending</div>
+      </div>
     </div>
   </div>
 
-  <div class="hero">
-    <div class="hero-stat"><div class="num">$471.6M</div><div class="label">Total Supply</div></div>
-    <div class="hero-div"></div>
-    <div class="hero-stat"><div class="num">$259.4M</div><div class="label">Total Borrow</div></div>
-    <div class="hero-div"></div>
-    <div class="hero-stat"><div class="num">55.0%</div><div class="label">Utilization</div></div>
-    <div class="hero-div"></div>
-    <div class="hero-stat"><div class="num">3</div><div class="label">Active Chains</div></div>
-  </div>
-
+  <!-- ═══════ WHALE WATCHING ═══════ -->
+  <div class="section-label">🐋 Whale Watching Report</div>
   <div class="grid">
 
-    <div class="card c-break full">
-      <h2>🔍 Breaking: $17.7M Mystery Depositor Identified — Likely Re7 Labs</h2>
-      <p><strong>Greninja (0x289c)</strong> traced to a vault-curator operation via Arkham + Etherscan. Wallet chain: <strong>6+ signer Gnosis Safe multisig</strong> → ops wallet (0x3063) → Dolomite depositor. Uses <strong>Paxos custody</strong> (96%), deploys across Dolomite + Euler EVK + Morpho + Aave via CoW Protocol. Pattern matches <a href="https://re7.capital" target="_blank" rel="noreferrer">Re7 Labs</a>, who run USD1 vaults on Euler. <span class="tag">PENDING COREY CONFIRMATION</span></p>
-      <p><strong>Why it matters:</strong> If Re7, they're programmatically allocating to Dolomite as part of a multi-protocol yield strategy. A formal curator relationship = automatic depositor capital inflow.</p>
+    <div class="card c-whale full">
+      <h2>🐋 72-Hour Capital Flows — $22.1M in, $13.9M out (net +$8.2M)</h2>
+      <div class="flow-bar">
+        <div class="flow-in" style="width:61.4%"></div>
+        <div class="flow-out" style="width:38.6%"></div>
+      </div>
+      <div class="flow-labels"><span style="color:var(--green)">▲ $22.1M deposits</span><span style="color:var(--red)">▼ $13.9M withdrawals</span></div>
     </div>
 
-    <div class="card c-rate">
-      <h2>📈 Rate Edge</h2>
-      <div class="rr"><span class="a">ETH USDC</span><span class="y">5.02%</span><span class="v">vs Aave 2.31%</span></div>
-      <div class="rr"><span class="a">ETH USD1</span><span class="y">7.34%</span><span class="v">util 66.4%</span></div>
-      <div class="rr"><span class="a">ARB USDC</span><span class="y">6.37%</span><span class="v">vs Aave 1.89%</span></div>
-      <div class="rr"><span class="a">BERA USDC</span><span class="y">11.39%</span><span class="v">🔥 incentives</span></div>
-      <div class="rr"><span class="a">BERA HONEY</span><span class="y">25.41%</span><span class="v">🔥🔥</span></div>
-      <p style="margin-top:8px;font-size:11px;color:var(--muted);">Hooks: “Double Aave” (ETH USDC) · “3× Aave” (ARB USDC)</p>
-    </div>
+    <div class="card c-whale full">
+      <h2>🔍 Active Whale Report — Who's Moving and Why</h2>
 
-    <div class="card c-liq">
-      <h2>💥 Liquidations · 29 This Week</h2>
-      <p><strong>Berachain WBERA cascade (Feb 11):</strong> 20+ liquidations, ~$530–630K collateral. Protocol handled it cleanly — canary for Bera volatility.</p>
-      <p><strong>Insight:</strong> Bera users are incentive chasers. ETH users are structured leverage. Two funnels → two messaging strategies.</p>
-    </div>
+      <div class="whale-entry">
+        <div class="whale-name">🐸 <a href="https://debank.com/profile/0x289c204b35859bfb924b9c0759a4fe80f610671c" target="_blank">Greninja</a> — $5.68M deposited (19 txns)</div>
+        <div class="whale-detail"><span class="tag">TOP BD TARGET</span> <span class="tag-green tag">LIKELY RE7 LABS</span> On a USD1 supply spree — $5.68M deposited over 72 hours in frequent tranches, zero withdrawals. This is the vault curator we just traced through Arkham (see Breaking Intel below). They're programmatically allocating to Dolomite as part of a multi-protocol yield strategy across Euler, Morpho, and Aave. Total position now ~$17.7M USD1 supply-only. <strong>This is our #1 organic BD lead.</strong></div>
+      </div>
 
-    <div class="card c-whale">
-      <h2>🏛️ WLFI — $240M Titan</h2>
-      <p><span class="tag">CONCENTRATION RISK</span> <a href="https://debank.com/profile/0x5be9a4959308a0d0c7bc0870e319314d8d957dbb" target="_blank" rel="noreferrer">$240.3M supply / $170.8M borrow</a> on ETH. LTV 67–76%. Their activity <strong>sets utilization and rates</strong> for ETH stables.</p>
-      <p><strong>Watch for:</strong> borrow reduction → rate collapse · supply withdrawal → liquidity stress · USD1↔USDC pivot</p>
-    </div>
+      <div class="whale-entry">
+        <div class="whale-name">🦗 <a href="https://debank.com/profile/0x8be46b25d5b2ade9b12a63ec1a202d5f49a8e8a5" target="_blank">Genesect</a> — $8.92M in / $8.46M out (29 txns)</div>
+        <div class="whale-detail"><span class="tag-gold tag">HIGH ACTIVITY</span> The LST Leverage King has been extremely active — 29 transactions in 72 hours, constantly rebalancing WBTC/USDC/weETH positions on Ethereum. Net +$460K but the churn suggests active leverage management. Running at 87% LTV — one bad ETH day and this whale could cascade. Worth proactive outreach on risk tooling.</div>
+      </div>
 
-    <div class="card c-whale">
-      <h2>🐸 Greninja — $17.7M Organic</h2>
-      <p><span class="tag">TOP BD TARGET</span> <a href="https://debank.com/profile/0x289c204b35859bfb924b9c0759a4fe80f610671c" target="_blank" rel="noreferrer">USD1 supply-only</a>. Deposited ~$4M in last 72h via frequent tranches. Likely <strong>Re7 Labs</strong> vault curator.</p>
-      <p>Gnosis Safe multisig · Paxos custody · Multi-protocol yield rotation (Dolomite + Euler + Morpho + Aave) · 271 days active, peaked $28M.</p>
-    </div>
+      <div class="whale-entry">
+        <div class="whale-name">🛡️ <a href="https://debank.com/profile/0x53cc1b407b5a0e65c7fdc2e85d7565210e3e0029" target="_blank">Aegislash</a> — $2.65M in / $2.59M out (5 txns)</div>
+        <div class="whale-detail">Same LST looper cohort as Genesect. $8.6M wstETH position at 86% LTV. Steady rebalancing but less frantic than Genesect. These two together represent ~$19M in correlated LST exposure.</div>
+      </div>
 
-    <div class="card c-risk">
-      <h2>⚠️ Risk Radar</h2>
-      <p><strong>LST depeg exposure:</strong> Multiple $M+ positions at 86–88% LTV (Genesect $10.5M, Aegislash $8.6M). A 3–4% adverse move = cascading liquidations.</p>
-      <p><strong>ETH USDC util ~90%:</strong> withdrawals constrained; rate volatility persists until new supply arrives.</p>
-    </div>
+      <div class="whale-entry">
+        <div class="whale-name">🏛️ <a href="https://debank.com/profile/0x5be9a4959308a0d0c7bc0870e319314d8d957dbb" target="_blank">WLFI (World Liberty Fi)</a> — $240.3M supply / $170.8M borrow</div>
+        <div class="whale-detail"><span class="tag-red tag">CONCENTRATION RISK</span> The Titan. Their activity literally sets utilization and rates for ETH stables. Quiet last 72h — no major position changes. LTV 67-76% (comfortable). <strong>Watch for:</strong> borrow reduction → rate collapse · supply withdrawal → liquidity stress · USD1↔USDC pivot. We should build a weekly "WLFI posture" panel showing what happens to USDC APY if they reduce borrow by 25/50/75%.</div>
+      </div>
 
-    <div class="card c-bd">
-      <h2>🎯 BD Targets</h2>
-      <p><strong>1) Greninja / Re7 Labs</strong> — formal curator relationship; get into their vault allocation. <span class="tag">HIGH PRIORITY</span></p>
-      <p><strong>2) Genesect</strong> (<a href="https://debank.com/profile/0x8be4" target="_blank" rel="noreferrer">0x8be4</a>) — LST leverage king, $10.5M. Proactive risk tooling = retention.</p>
-      <p><strong>3) Aegislash</strong> (<a href="https://debank.com/profile/0x53cc" target="_blank" rel="noreferrer">0x53cc</a>) — $8.6M wstETH. Same LST looper cohort.</p>
-    </div>
+      <div class="whale-entry">
+        <div class="whale-name">🌋 <a href="https://debank.com/profile/0xd480bb579f61edf044d0e86e33cb72310c816d6a" target="_blank">Volcarona</a> — $1.36M in / $0.60M out (3 txns)</div>
+        <div class="whale-detail">New USD1 depositor on Ethereum. $760K net inflow in 72h — still small but worth tracking. Could be another yield allocator following the same path as Greninja.</div>
+      </div>
 
-    <div class="card c-tweet full">
-      <h2>🐦 Tweet Drafts — Ready to Post</h2>
-      <div class="tweet"><span class="model">🟣 Opus</span>Dolomite ETH USDC supply is 5.0% right now vs Aave ~2.3%. That’s ~2.2× yield on one of the deepest stable markets in DeFi.</div>
-      <div class="tweet"><span class="model">🟢 Codex</span>Arbitrum USDC on Dolomite is ~6.4% supply vs Aave ~1.9%. That’s ~3.4× the yield. Same asset, same chain, wildly different outcomes.</div>
-      <div class="tweet"><span class="model">🔵 Gemini</span>Berachain stables are spicy. Dolomite USDC supply ~11.4% and HONEY ~25% today. High incentives, real borrow demand, real volatility. Know your risk.</div>
-    </div>
+      <div class="whale-entry">
+        <div class="whale-name">⚡ <a href="https://debank.com/profile/0x6ccbb9db929fdd5c22d06f4e2dcc5e0f7c30aa87" target="_blank">Toxtricity</a> — $1.52M deposited (1 txn)</div>
+        <div class="whale-detail">Single-shot $1.52M USDC deposit on Ethereum. USD1/USDC arb player. Previous total position was $7.5M. Increasing exposure.</div>
+      </div>
 
-    <div class="card c-action full">
-      <h2>✅ Recommended Actions</h2>
-      <div class="actions-grid">
-        <div>
-          <h3 style="color: var(--accent-rate)">Marketing</h3>
-          <p>1) Lead with yield spreads — “Double Aave” on ETH, “3× Aave” on ARB</p>
-          <p>2) Segment Berachain messaging with volatility disclaimers</p>
-        </div>
-        <div>
-          <h3 style="color: var(--accent-bd)">Protocol</h3>
-          <p>1) High-LTV cluster monitoring for LST loopers (Genesect/Aegislash)</p>
-          <p>2) ETH USDC 90% util — supply onboarding + liquidity messaging</p>
-        </div>
-        <div>
-          <h3 style="color: var(--link)">Business Dev</h3>
-          <p>1) Confirm + outreach Greninja (Re7 Labs?) — formal allocation target</p>
-          <p>2) Proactive outreach to LST leverage cohort — risk tooling as retention</p>
-        </div>
+      <div class="whale-entry">
+        <div class="whale-name">🐻 <a href="https://debank.com/profile/0x6cc60a0b57e9dc27df08d41cf82277b67c031a24" target="_blank">Beartic</a> — $250K in / $140K out (3 txns)</div>
+        <div class="whale-detail">Berachain power user (likely <strong>Avant</strong> strategy wallet). savUSD/USDC.e activity — $4M total position. Still growing. Bear-themed Pokémon for a Berachain whale, naturally.</div>
       </div>
     </div>
 
+  </div>
+
+  <!-- ═══════ LIQUIDATIONS ═══════ -->
+  <div class="section-label">💥 Liquidation Intelligence</div>
+  <div class="grid">
+
+    <div class="card c-liq full">
+      <h2>💥 28 Liquidations This Week — $636.8K Collateral Seized</h2>
+      <p style="margin-bottom:12px;">Berachain dominates: <strong>23 of 28 liquidations</strong> ($636.2K) — mostly from the WBERA cascade on Feb 11. Ethereum was quiet (3 liqs, $100), Arbitrum even quieter (2 liqs, $600). The protocol handled the cascade cleanly, but Berachain remains the volatility hotspot.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div>
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--green);margin-bottom:6px;">⚡ LIQUIDATOR BREAKDOWN</p>
+          <div class="liq-row"><div style="flex:1"><span class="liq-bot"><a href="https://debank.com/profile/0x1ff6b8e1192eb0369006bbad76da9068b68961b2" target="_blank">Dolomite Bot</a></span></div><div>15 liqs · $37.0K</div></div>
+          <div class="liq-row"><div style="flex:1"><span class="liq-bot"><a href="https://debank.com/profile/0xe18574afe36e6ae25ff0e3cba61a03ddf" target="_blank">External Bot (0xe185)</a></span></div><div>10 liqs · $599.7K</div></div>
+          <div class="liq-row"><div style="flex:1"><span class="liq-bot">Other (0xb0bc)</span></div><div>3 liqs · $0.1K</div></div>
+        </div>
+        <div>
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--green);margin-bottom:6px;">📊 BY CHAIN</p>
+          <div class="liq-row"><div style="flex:1">Berachain</div><div>23 liqs · $636.2K</div></div>
+          <div class="liq-row"><div style="flex:1">Ethereum</div><div>3 liqs · $0.1K</div></div>
+          <div class="liq-row"><div style="flex:1">Arbitrum</div><div>2 liqs · $0.6K</div></div>
+        </div>
+      </div>
+
+      <p style="margin-top:12px;font-size:12px;color:var(--muted);">💡 <strong>Note:</strong> External bot 0xe185 grabbed the big Berachain cascade ($599.7K) — Dolomite's bot handled the smaller ones. Worth investigating if Dolomite's bot missed the cascade or was outbid on gas.</p>
+    </div>
+
+  </div>
+
+  <!-- ═══════ BREAKING INTEL ═══════ -->
+  <div class="section-label">🔍 Breaking Intel</div>
+  <div class="grid">
+
+    <div class="card c-break full">
+      <h2>🔍 $17.7M Mystery Depositor Identified — Likely Re7 Labs</h2>
+      <p><strong>Greninja (0x289c)</strong> traced to a vault-curator operation via Arkham + Etherscan. Wallet chain: <strong>6+ signer Gnosis Safe multisig</strong> → ops wallet (0x3063) → Dolomite depositor. Uses <strong>Paxos custody</strong> (96% of flows), deploys across Dolomite + Euler EVK + Morpho + Aave via CoW Protocol. Pattern matches <a href="https://re7.capital" target="_blank">Re7 Labs</a>, who run USD1 vaults on Euler. <span class="tag">PENDING COREY CONFIRMATION</span></p>
+      <p><strong>Why it matters:</strong> If Re7, they're programmatically allocating to Dolomite as part of a multi-protocol yield strategy. A formal curator relationship = automatic depositor capital inflow. This is the biggest BD opportunity outside of WLFI.</p>
+    </div>
+
+  </div>
+
+  <!-- ═══════ RATES ═══════ -->
+  <div class="section-label">📈 Rates & Opportunities</div>
+  <div class="grid">
+
+    <div class="card c-rate">
+      <h2>📈 Top Stablecoin Yields</h2>
+      <div class="rr"><span class="a">ETH USD1</span><span class="y">7.18%</span><span class="v">$167M TVL · 65.7% util</span></div>
+      <div class="rr"><span class="a">ARB USDC</span><span class="y">6.44%</span><span class="v">$6.6M TVL · 56.0% util</span></div>
+      <div class="rr"><span class="a">ETH USDC</span><span class="y">5.03%</span><span class="v">$110M TVL · 90.0% util</span></div>
+      <div class="rr"><span class="a">ARB USDT</span><span class="y">4.00%</span><span class="v">$3.2M TVL · 65.1% util</span></div>
+      <div class="rr"><span class="a">ETH USDT</span><span class="y">3.39%</span><span class="v">$4.4M TVL · 80.2% util</span></div>
+      <div class="rr"><span class="a">BERA USDC</span><span class="y">11.39%</span><span class="v">🔥 $4.3M TVL</span></div>
+      <div class="rr"><span class="a">BERA HONEY</span><span class="y">25.41%</span><span class="v">🔥🔥 $2.3M TVL</span></div>
+      <div class="rr"><span class="a">BERA savUSD</span><span class="y">8.08%</span><span class="v">$6.6M TVL · 0% util</span></div>
+    </div>
+
+    <div class="card c-rate">
+      <h2>⚔️ vs Competitors (Supply APY)</h2>
+      <div class="rr"><span class="a">ETH USDC</span><span class="y" style="color:var(--text)">5.03%</span><span class="v">vs Aave 2.31%</span></div>
+      <div class="rr"><span class="a">ETH USDT</span><span class="y" style="color:var(--text)">3.39%</span><span class="v">vs Aave 1.81%</span></div>
+      <div class="rr"><span class="a">ARB USDC</span><span class="y" style="color:var(--text)">6.44%</span><span class="v">vs Aave 1.89%</span></div>
+      <p style="margin-top:10px;font-size:12px;"><strong>Marketing hooks:</strong></p>
+      <p style="font-size:12.5px;">🔵 "Double Aave's yield" on ETH USDC (5.0% vs 2.3%)</p>
+      <p style="font-size:12.5px;">🔵 "3× Aave's yield" on ARB USDC (6.4% vs 1.9%)</p>
+      <p style="font-size:12.5px;">🔵 Berachain stables for the degen crowd — 11-25% with real borrow demand</p>
+    </div>
+
+  </div>
+
+  <!-- ═══════ TWEETS ═══════ -->
+  <div class="section-label">🐦 Tweet Drafts</div>
+  <div class="grid">
+    <div class="card c-tweet full">
+      <h2>🐦 Ready to Post (≤280 chars)</h2>
+      <div class="tweet"><span class="model">🟣 Opus — ETH USDC angle</span>Dolomite ETH USDC supply is 5.0% right now vs Aave ~2.3%. That's ~2.2× yield on one of the deepest stable markets in DeFi.</div>
+      <div class="tweet"><span class="model">🟢 Codex — ARB USDC angle</span>Arbitrum USDC on Dolomite is ~6.4% supply vs Aave ~1.9%. That's ~3.4× the yield. Same asset, same chain, wildly different outcomes.</div>
+      <div class="tweet"><span class="model">🔵 Gemini — Berachain angle</span>Berachain stables are spicy. Dolomite USDC supply ~11.4% and HONEY ~25% today. High incentives, real borrow demand, real volatility. Know your risk.</div>
+    </div>
+  </div>
+
+  <!-- ═══════ RECOMMENDED ACTIONS ═══════ -->
+  <div class="section-label">✅ Recommended Actions</div>
+  <div class="grid">
+    <div class="card c-action full">
+      <h2>✅ What to Do This Week</h2>
+      <div class="actions-grid">
+        <div>
+          <h3 style="color:var(--green)">Marketing</h3>
+          <p><strong>1) Lead with yield spreads</strong> — "Double Aave" on ETH USDC, "3× Aave" on ARB USDC. These are real, large-TVL numbers. Put them in every tweet, every thread, every comparison graphic.</p>
+          <p><strong>2) Segment Berachain</strong> — Different audience, different risk tolerance. Market HONEY 25% APY but always pair it with volatility disclaimers. These users know they're degen-ing.</p>
+          <p><strong>3) WLFI infrastructure narrative</strong> — "We are the infrastructure a billion-dollar business runs on." Don't name names. Let the TVL speak.</p>
+        </div>
+        <div>
+          <h3 style="color:var(--purple)">Protocol / Product</h3>
+          <p><strong>1) Liquidator bot investigation</strong> — External bot 0xe185 grabbed $599.7K (94% of liquidation volume). Is our bot slow? Outbid on gas? Lost revenue opportunity. Talk to devs.</p>
+          <p><strong>2) High-LTV monitoring</strong> — Genesect + Aegislash = $19M at 86-87% LTV. Correlated LST exposure. Build an internal alert for when this cohort drifts above 88%.</p>
+          <p><strong>3) USDC supply onboarding</strong> — ETH USDC util is at 90%. Rate vol will persist. Make it dead simple for new suppliers to onboard — that's where growth comes from.</p>
+        </div>
+        <div>
+          <h3 style="color:var(--cyan)">Business Dev</h3>
+          <p><strong>1) Greninja / Re7 Labs</strong> — Confirm identity with Corey, then reach out directly. If Re7 is allocating to us programmatically, a formal relationship could 2-3× their allocation. <span class="tag">TOP PRIORITY</span></p>
+          <p><strong>2) Volcarona tracking</strong> — New $760K USD1 depositor. If they're another yield allocator following Greninja's path, catch them early.</p>
+          <p><strong>3) LST looper outreach</strong> — Genesect and Aegislash are power users running $19M in leverage. Proactive risk tooling = retention. Let them know we see them and we've got their back.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ BD TARGETS ═══════ -->
+  <div class="section-label">🎯 BD Targets</div>
+  <div class="grid">
+    <div class="card c-bd full">
+      <h2>🎯 Priority Outreach List</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+        <div>
+          <p><strong>🥇 Greninja / Re7 Labs</strong></p>
+          <p style="font-size:12px;">$17.7M USD1 supply. Vault curator. Formal allocation relationship could funnel depositor capital automatically. Confirmation pending.</p>
+        </div>
+        <div>
+          <p><strong>🥈 Genesect</strong> (<a href="https://debank.com/profile/0x8be4" target="_blank">0x8be4</a>)</p>
+          <p style="font-size:12px;">$10.5M LST Leverage King. 29 txns in 72h. High activity = high engagement potential. Risk tooling as a retention hook.</p>
+        </div>
+        <div>
+          <p><strong>🥉 Aegislash</strong> (<a href="https://debank.com/profile/0x53cc" target="_blank">0x53cc</a>)</p>
+          <p style="font-size:12px;">$8.6M wstETH at 86% LTV. Same cohort as Genesect. Package deal outreach.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ RISK (AT THE END) ═══════ -->
+  <div class="section-label">⚠️ Risk Assessment</div>
+  <div class="grid">
+    <div class="card c-risk full">
+      <h2>⚠️ Risk Radar</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div>
+          <p><strong>LST Depeg Exposure</strong></p>
+          <p style="font-size:12.5px;">Multiple $M+ positions at 86-88% LTV (Genesect $10.5M, Aegislash $8.6M). A 3-4% adverse move in wstETH/weETH triggers cascading liquidations. These are correlated positions — they'd all blow up at once.</p>
+        </div>
+        <div>
+          <p><strong>ETH USDC Utilization at 90%</strong></p>
+          <p style="font-size:12.5px;">Withdrawal capacity constrained. Rate volatility will persist until new supply arrives. WLFI controls the majority of borrow demand — if they reduce, rates collapse. If they increase, util hits 95%+ and we have a problem.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="footer">
@@ -544,22 +451,12 @@ html[data-theme="terminal"] .masthead a { text-decoration: underline; }
 
 <script>
 (function(){
-  const select = document.getElementById('theme');
+  const sel = document.getElementById('theme');
   const key = 'dolomite-intel-theme';
-
-  function apply(theme){
-    document.documentElement.setAttribute('data-theme', theme);
-    select.value = theme;
-  }
-
+  function apply(t){ document.documentElement.setAttribute('data-theme',t); sel.value=t; }
   const saved = localStorage.getItem(key);
   if(saved) apply(saved);
-
-  select.addEventListener('change', () => {
-    const theme = select.value;
-    localStorage.setItem(key, theme);
-    apply(theme);
-  });
+  sel.addEventListener('change', () => { const t=sel.value; localStorage.setItem(key,t); apply(t); });
 })();
 </script>
 </body>
