@@ -1,76 +1,142 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="newspaper">
+<html lang="en" data-theme="dolomite">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dolomite Intelligence Briefing — Feb 16, 2026</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,800&family=Roboto+Mono:wght@400;500;700&display=swap');
+@font-face { font-family: Saans; font-style: normal; font-weight: 100 900; font-display: swap; src: url('https://dolomite.io/fonts/SaansVF.woff2') format('woff2'); }
 
 /* ----------------------------
    THEME TOKENS (CSS VARIABLES)
    ---------------------------- */
 :root {
+  --font-saans: Saans, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-sans: Inter, -apple-system, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono: 'Roboto Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-serif: 'Newsreader', ui-serif, Georgia, 'Times New Roman', Times, serif;
 
+  /* Dolomite defaults */
+  --bg: rgb(22, 20, 31);
+  --page-bg: rgb(22, 20, 31);
+  --text: rgb(230, 227, 247);
+  --muted: rgb(156, 153, 173);
+  --line: rgba(147, 128, 255, 0.18);
+  --shadow: 0 2px 8px rgba(0,0,0,0.25);
+
+  --masthead-border: 1px solid rgba(147, 128, 255, 0.3);
+  --masthead-title-font: var(--font-saans);
+  --masthead-title-weight: 380;
+  --masthead-title-size: 36px;
+  --masthead-sub-letter: 3px;
+
+  --hero-bg: linear-gradient(135deg, rgb(35, 32, 50) 0%, rgb(42, 40, 62) 100%);
+  --hero-text: rgb(230, 227, 247);
+
+  --card-bg: rgb(35, 32, 50);
+  --card-radius: 10px;
+  --card-pad: 16px;
+  --card-border: rgba(147, 128, 255, 0.15);
+
+  --accent-break: rgb(147, 128, 255);
+  --accent-rate: rgb(66, 242, 191);
+  --accent-liq:  #ef4444;
+  --accent-whale: rgb(147, 128, 255);
+  --accent-risk: rgb(254, 202, 81);
+  --accent-bd:   rgb(27, 189, 251);
+  --accent-tweet: rgb(27, 189, 251);
+  --accent-action: rgb(182, 254, 81);
+
+  --chip-bg: rgba(147, 128, 255, 0.1);
+  --chip-text: rgb(147, 128, 255);
+
+  --link: rgb(147, 128, 255);
+}
+
+/* Dolomite branded (default) */
+html[data-theme="dolomite"] body { font-family: var(--font-saans); font-weight: 380; }
+html[data-theme="dolomite"] .card h2 { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; }
+html[data-theme="dolomite"] .masthead .sub { font-family: var(--font-mono); }
+html[data-theme="dolomite"] .badge { font-family: var(--font-mono); }
+html[data-theme="dolomite"] .rr .a { font-family: var(--font-mono); font-size: 12px; }
+html[data-theme="dolomite"] .rr .y { color: rgb(182, 254, 81); }
+html[data-theme="dolomite"] .tag { font-family: var(--font-mono); border-radius: 4px; }
+html[data-theme="dolomite"] .hero { border: 1px solid rgba(147, 128, 255, 0.2); }
+html[data-theme="dolomite"] .hero-stat .num { font-weight: 500; }
+html[data-theme="dolomite"] .hero-div { background: rgba(147, 128, 255, 0.25); }
+html[data-theme="dolomite"] .actions-grid h3 { font-family: var(--font-mono); }
+html[data-theme="dolomite"] .footer { font-family: var(--font-mono); }
+html[data-theme="dolomite"] .tweet .model { font-family: var(--font-mono); }
+html[data-theme="dolomite"] select { background: rgb(53, 50, 73); color: rgb(230, 227, 247); border-color: rgba(147, 128, 255, 0.3); }
+
+/* Newspaper */
+html[data-theme="newspaper"] {
   --bg: #f8fafc;
   --page-bg: transparent;
   --text: #111827;
   --muted: #6b7280;
   --line: #e5e7eb;
   --shadow: 0 1px 3px rgba(0,0,0,0.06);
-
   --masthead-border: 4px double #111827;
   --masthead-title-font: var(--font-sans);
   --masthead-title-weight: 900;
   --masthead-title-size: 36px;
-  --masthead-sub-letter: 3px;
-
   --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
   --hero-text: #ffffff;
-
   --card-bg: #ffffff;
-  --card-radius: 10px;
-  --card-pad: 16px;
   --card-border: #e5e7eb;
-
   --accent-break: #ec4899;
   --accent-rate: #10b981;
-  --accent-liq:  #ef4444;
-  --accent-whale:#6366f1;
+  --accent-liq: #ef4444;
+  --accent-whale: #6366f1;
   --accent-risk: #f97316;
-  --accent-bd:   #8b5cf6;
-  --accent-tweet:#0ea5e9;
-  --accent-action:#eab308;
-
+  --accent-bd: #8b5cf6;
+  --accent-tweet: #0ea5e9;
+  --accent-action: #eab308;
   --chip-bg: #eef2ff;
   --chip-text: #3730a3;
-
   --link: #2563eb;
 }
-
-/* Newspaper (default) */
-html[data-theme="newspaper"] {
-  --bg: #f8fafc;
-  --masthead-title-font: var(--font-sans);
-  --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-}
+html[data-theme="newspaper"] body { font-family: var(--font-sans); font-weight: 400; }
+html[data-theme="newspaper"] .card h2 { font-family: var(--font-sans); }
+html[data-theme="newspaper"] .rr .y { color: #059669; }
+html[data-theme="newspaper"] select { background: #fff; color: #111; border-color: #e5e7eb; }
 
 /* Bloomberg site-ish: dense, gray, sharp */
 html[data-theme="bloomberg"] {
   --bg: #f3f4f6;
+  --page-bg: transparent;
   --text: #0b0f19;
   --muted: #4b5563;
   --line: #d1d5db;
   --shadow: 0 0 0 rgba(0,0,0,0);
   --masthead-border: 1px solid #111827;
+  --masthead-title-font: var(--font-sans);
+  --masthead-title-weight: 900;
   --masthead-title-size: 30px;
   --hero-bg: linear-gradient(135deg, #111827 0%, #0b0f19 100%);
+  --hero-text: #fff;
+  --card-bg: #fff;
+  --card-border: #d1d5db;
   --card-radius: 6px;
   --card-pad: 14px;
+  --accent-break: #ec4899;
+  --accent-rate: #10b981;
+  --accent-liq: #ef4444;
+  --accent-whale: #6366f1;
+  --accent-risk: #f97316;
+  --accent-bd: #8b5cf6;
+  --accent-tweet: #0ea5e9;
+  --accent-action: #eab308;
+  --chip-bg: #eef2ff;
+  --chip-text: #3730a3;
+  --link: #2563eb;
 }
+html[data-theme="bloomberg"] body { font-family: var(--font-sans); font-weight: 400; }
+html[data-theme="bloomberg"] .card h2 { font-family: var(--font-sans); }
+html[data-theme="bloomberg"] .rr .y { color: #059669; }
+html[data-theme="bloomberg"] select { background: #fff; color: #111; border-color: #d1d5db; }
 
 /* Bloomberg Terminal: black, green, mono, ultra dense */
 html[data-theme="terminal"] {
@@ -107,137 +173,106 @@ html[data-theme="terminal"] {
 
 /* AltaVista-ish: retro, serif headline, chunky borders */
 html[data-theme="altavista"] {
-  --bg: #fff7ed;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --line: #111827;
-  --shadow: 0 0 0 rgba(0,0,0,0);
+  --bg: #fff7ed; --page-bg: transparent;
+  --text: #1f2937; --muted: #6b7280;
+  --line: #111827; --shadow: 0 0 0 rgba(0,0,0,0);
   --masthead-border: 3px solid #111827;
   --masthead-title-font: var(--font-serif);
-  --masthead-title-weight: 800;
-  --masthead-title-size: 34px;
-  --hero-bg: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-  --card-radius: 0px;
-  --card-border: #111827;
-  --card-pad: 14px;
+  --masthead-title-weight: 800; --masthead-title-size: 34px;
+  --hero-bg: linear-gradient(135deg, #1f2937 0%, #111827 100%); --hero-text: #fff;
+  --card-bg: #fff7ed; --card-radius: 0px; --card-border: #111827; --card-pad: 14px;
   --link: #b91c1c;
-
-  --accent-break: #b91c1c;
-  --accent-rate: #065f46;
-  --accent-liq:  #b91c1c;
-  --accent-whale:#1d4ed8;
-  --accent-risk: #92400e;
-  --accent-bd:   #6d28d9;
-  --accent-tweet:#0e7490;
-  --accent-action:#92400e;
+  --accent-break: #b91c1c; --accent-rate: #065f46; --accent-liq: #b91c1c;
+  --accent-whale: #1d4ed8; --accent-risk: #92400e; --accent-bd: #6d28d9;
+  --accent-tweet: #0e7490; --accent-action: #92400e;
+  --chip-bg: #fef3c7; --chip-text: #92400e;
 }
+html[data-theme="altavista"] body { font-family: var(--font-sans); font-weight: 400; }
+html[data-theme="altavista"] .rr .y { color: #065f46; }
+html[data-theme="altavista"] select { background: #fff7ed; color: #1f2937; border-color: #111827; }
 
-/* Minimal: ultra-clean, lots of whitespace but compact typography */
+/* Minimal: ultra-clean */
 html[data-theme="minimal"] {
-  --bg: #ffffff;
-  --line: #e5e7eb;
+  --bg: #ffffff; --page-bg: transparent;
+  --text: #111827; --muted: #6b7280;
+  --line: #e5e7eb; --shadow: 0 8px 22px rgba(0,0,0,0.06);
   --masthead-border: 0;
-  --hero-bg: linear-gradient(135deg, #111827 0%, #374151 100%);
-  --card-radius: 12px;
-  --shadow: 0 8px 22px rgba(0,0,0,0.06);
+  --masthead-title-font: var(--font-sans); --masthead-title-weight: 900;
+  --hero-bg: linear-gradient(135deg, #111827 0%, #374151 100%); --hero-text: #fff;
+  --card-bg: #ffffff; --card-border: #e5e7eb; --card-radius: 12px;
+  --accent-break: #ec4899; --accent-rate: #10b981; --accent-liq: #ef4444;
+  --accent-whale: #6366f1; --accent-risk: #f97316; --accent-bd: #8b5cf6;
+  --accent-tweet: #0ea5e9; --accent-action: #eab308;
+  --chip-bg: #eef2ff; --chip-text: #3730a3; --link: #2563eb;
 }
+html[data-theme="minimal"] body { font-family: var(--font-sans); font-weight: 400; }
+html[data-theme="minimal"] .rr .y { color: #059669; }
+html[data-theme="minimal"] select { background: #fff; color: #111; border-color: #e5e7eb; }
 
 /* Financial Times: salmon pink, serif headlines, authoritative */
 html[data-theme="ft"] {
-  --bg: #fff1e5;
-  --text: #33302e;
-  --muted: #73655e;
-  --line: #e0cdbf;
-  --shadow: 0 1px 2px rgba(0,0,0,0.04);
+  --bg: #fff1e5; --page-bg: transparent;
+  --text: #33302e; --muted: #73655e;
+  --line: #e0cdbf; --shadow: 0 1px 2px rgba(0,0,0,0.04);
   --masthead-border: 2px solid #33302e;
   --masthead-title-font: var(--font-serif);
-  --masthead-title-weight: 800;
-  --masthead-title-size: 34px;
-  --masthead-sub-letter: 2px;
-  --hero-bg: linear-gradient(135deg, #262a33 0%, #1a1a2e 100%);
-  --card-bg: #fff9f2;
-  --card-border: #e0cdbf;
-  --card-radius: 4px;
-  --card-pad: 14px;
+  --masthead-title-weight: 800; --masthead-title-size: 34px; --masthead-sub-letter: 2px;
+  --hero-bg: linear-gradient(135deg, #262a33 0%, #1a1a2e 100%); --hero-text: #fff;
+  --card-bg: #fff9f2; --card-border: #e0cdbf; --card-radius: 4px; --card-pad: 14px;
   --link: #0d7680;
-  --accent-break: #c00;
-  --accent-rate: #0d7680;
-  --accent-liq: #c00;
-  --accent-whale: #0f5499;
-  --accent-risk: #a0522d;
-  --accent-bd: #593380;
-  --accent-tweet: #0d7680;
-  --accent-action: #8b6914;
-  --chip-bg: rgba(13,118,128,0.08);
-  --chip-text: #0d7680;
+  --accent-break: #c00; --accent-rate: #0d7680; --accent-liq: #c00;
+  --accent-whale: #0f5499; --accent-risk: #a0522d; --accent-bd: #593380;
+  --accent-tweet: #0d7680; --accent-action: #8b6914;
+  --chip-bg: rgba(13,118,128,0.08); --chip-text: #0d7680;
 }
+html[data-theme="ft"] body { font-family: var(--font-sans); font-weight: 400; }
+html[data-theme="ft"] .masthead h1 { font-family: var(--font-serif); }
+html[data-theme="ft"] .rr .y { color: #0d7680; }
+html[data-theme="ft"] select { background: #fff9f2; color: #33302e; border-color: #e0cdbf; }
 
 /* Drudge Report: stark, monospace, no frills, all signal */
 html[data-theme="drudge"] {
-  --bg: #ffffff;
-  --text: #000000;
-  --muted: #555;
-  --line: #000;
-  --shadow: 0 0 0 transparent;
+  --bg: #ffffff; --page-bg: transparent;
+  --text: #000000; --muted: #555;
+  --line: #000; --shadow: 0 0 0 transparent;
   --masthead-border: 3px solid #000;
-  --masthead-title-font: var(--font-mono);
-  --masthead-title-weight: 900;
-  --masthead-title-size: 32px;
-  --masthead-sub-letter: 4px;
-  --hero-bg: #000;
-  --hero-text: #fff;
-  --card-bg: #fff;
-  --card-border: #ccc;
-  --card-radius: 0;
-  --card-pad: 12px;
+  --masthead-title-font: var(--font-mono); --masthead-title-weight: 900;
+  --masthead-title-size: 32px; --masthead-sub-letter: 4px;
+  --hero-bg: #000; --hero-text: #fff;
+  --card-bg: #fff; --card-border: #ccc; --card-radius: 0; --card-pad: 12px;
   --link: #c00;
-  --accent-break: #c00;
-  --accent-rate: #006600;
-  --accent-liq: #c00;
-  --accent-whale: #000080;
-  --accent-risk: #c00;
-  --accent-bd: #660066;
-  --accent-tweet: #006;
-  --accent-action: #660;
-  --chip-bg: #f0f0f0;
-  --chip-text: #c00;
+  --accent-break: #c00; --accent-rate: #006600; --accent-liq: #c00;
+  --accent-whale: #000080; --accent-risk: #c00; --accent-bd: #660066;
+  --accent-tweet: #006; --accent-action: #660;
+  --chip-bg: #f0f0f0; --chip-text: #c00;
 }
-html[data-theme="drudge"] body { font-family: var(--font-mono); font-size: 12px; }
+html[data-theme="drudge"] body { font-family: var(--font-mono); font-size: 12px; font-weight: 400; }
 html[data-theme="drudge"] .hero { border-radius: 0; }
-html[data-theme="drudge"] .card h2 { font-size: 14px; letter-spacing: 0; text-decoration: underline; }
+html[data-theme="drudge"] .card h2 { font-size: 14px; letter-spacing: 0; text-decoration: underline; font-family: var(--font-mono); }
+html[data-theme="drudge"] .rr .y { color: #006600; }
+html[data-theme="drudge"] select { background: #fff; color: #000; border-color: #000; }
 
 /* Hacker News: beige, minimal, link-list feel */
 html[data-theme="hackernews"] {
-  --bg: #f6f6ef;
-  --text: #000;
-  --muted: #828282;
-  --line: #e0d8ce;
-  --shadow: 0 0 0 transparent;
+  --bg: #f6f6ef; --page-bg: transparent;
+  --text: #000; --muted: #828282;
+  --line: #e0d8ce; --shadow: 0 0 0 transparent;
   --masthead-border: 2px solid #ff6600;
-  --masthead-title-font: var(--font-sans);
-  --masthead-title-weight: 700;
-  --masthead-title-size: 28px;
-  --masthead-sub-letter: 1px;
-  --hero-bg: #ff6600;
-  --hero-text: #fff;
-  --card-bg: #f6f6ef;
-  --card-border: #e0d8ce;
-  --card-radius: 2px;
-  --card-pad: 12px;
+  --masthead-title-font: var(--font-sans); --masthead-title-weight: 700;
+  --masthead-title-size: 28px; --masthead-sub-letter: 1px;
+  --hero-bg: #ff6600; --hero-text: #fff;
+  --card-bg: #f6f6ef; --card-border: #e0d8ce; --card-radius: 2px; --card-pad: 12px;
   --link: #000;
-  --accent-break: #ff6600;
-  --accent-rate: #000;
-  --accent-liq: #ff6600;
-  --accent-whale: #000;
-  --accent-risk: #ff6600;
-  --accent-bd: #000;
-  --accent-tweet: #000;
-  --accent-action: #ff6600;
-  --chip-bg: rgba(255,102,0,0.1);
-  --chip-text: #ff6600;
+  --accent-break: #ff6600; --accent-rate: #000; --accent-liq: #ff6600;
+  --accent-whale: #000; --accent-risk: #ff6600; --accent-bd: #000;
+  --accent-tweet: #000; --accent-action: #ff6600;
+  --chip-bg: rgba(255,102,0,0.1); --chip-text: #ff6600;
 }
+html[data-theme="hackernews"] body { font-family: var(--font-sans); font-weight: 400; }
 html[data-theme="hackernews"] .hero { border-radius: 2px; }
 html[data-theme="hackernews"] .card { border-left-width: 3px; }
+html[data-theme="hackernews"] .rr .y { color: #000; font-weight: 900; }
+html[data-theme="hackernews"] select { background: #f6f6ef; color: #000; border-color: #e0d8ce; }
 
 /* Cyberpunk: neon purple/pink on dark, sci-fi feel */
 html[data-theme="cyberpunk"] {
@@ -384,15 +419,16 @@ html[data-theme="terminal"] .masthead a { text-decoration: underline; }
     <div class="theme-chooser">
       <label for="theme">Style</label>
       <select id="theme" name="theme">
+        <option value="dolomite">◆ Dolomite</option>
         <option value="newspaper">📰 Newspaper</option>
         <option value="bloomberg">📊 Bloomberg</option>
         <option value="terminal">🖥️ Terminal</option>
-        <option value="altavista">🔍 AltaVista</option>
-        <option value="minimal">✨ Minimal</option>
         <option value="ft">📋 Financial Times</option>
+        <option value="minimal">✨ Minimal</option>
+        <option value="cyberpunk">💜 Cyberpunk</option>
+        <option value="altavista">🔍 AltaVista</option>
         <option value="drudge">🚨 Drudge Report</option>
         <option value="hackernews">🟠 Hacker News</option>
-        <option value="cyberpunk">💜 Cyberpunk</option>
       </select>
     </div>
   </div>
