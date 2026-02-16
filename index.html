@@ -89,6 +89,11 @@ select { font-family:var(--font-mono); font-size:11px; padding:6px 10px; border:
 .tag-red { background:rgba(239,68,68,0.1); color:#ef4444; border-color:rgba(239,68,68,0.3); }
 .tag-green { background:rgba(66,242,191,0.1); color:var(--green); border-color:rgba(66,242,191,0.3); }
 .tag-gold { background:rgba(254,202,81,0.1); color:var(--gold); border-color:rgba(254,202,81,0.3); }
+.tag-chain { display:inline-block; font-family:var(--font-mono); font-size:9px; font-weight:700; padding:1px 5px; border-radius:3px; letter-spacing:0.3px; vertical-align:middle; margin-left:4px; }
+.tag-eth { background:rgba(98,126,234,0.15); color:#627eea; border:1px solid rgba(98,126,234,0.3); }
+.tag-arb { background:rgba(40,160,240,0.15); color:#28a0f0; border:1px solid rgba(40,160,240,0.3); }
+.tag-bera { background:rgba(180,130,60,0.15); color:#c4922a; border:1px solid rgba(180,130,60,0.3); }
+.tag-unconfirmed { background:rgba(254,202,81,0.1); color:var(--gold); border:1px solid rgba(254,202,81,0.3); font-family:var(--font-mono); font-size:9px; font-weight:700; padding:1px 5px; border-radius:3px; display:inline-block; vertical-align:middle; margin-left:4px; }
 
 /* RATE TABLE */
 .rr { display:flex; justify-content:space-between; align-items:baseline; padding:4px 0; border-bottom:1px solid rgba(147,128,255,0.08); font-size:12.5px; }
@@ -266,16 +271,16 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
         <div>
           <p style="font-family:var(--font-mono);font-size:11px;color:var(--red);margin-bottom:6px;">🔴 RATE ALERTS</p>
-          <p><strong>ETH USDC at 90% utilization</strong> — $110.7M TVL, withdrawals constrained. This is the tightest major stablecoin pool across all DeFi. Rate vol will persist until new supply enters.</p>
-          <p><strong>BERA WBERA at 67.2% supply APY</strong> — $1.7M TVL. Extremely high incentive rate on a volatile asset. This is what triggered the Feb 11 liquidation cascade.</p>
-          <p><strong>BERA iBERA at 153.7% APY / 98% util</strong> — Tiny pool ($100K) but maxed out. Someone really wants to borrow iBERA.</p>
-          <p><strong>BERA oriBGT at 105.6% APY</strong> — Berachain governance play. High incentives pulling in degens.</p>
+          <p><strong>USDC</strong> <span class="tag-chain tag-eth">ETH</span> <strong>at 90% utilization</strong> — $110.7M TVL, withdrawals constrained. This is the tightest major stablecoin pool across all DeFi. Rate vol will persist until new supply enters.</p>
+          <p><strong>WBERA</strong> <span class="tag-chain tag-bera">BERA</span> <strong>at 67.2% supply APY</strong> — $1.7M TVL. Extremely high incentive rate on a volatile asset. This is what triggered the Feb 11 liquidation cascade.</p>
+          <p><strong>iBERA</strong> <span class="tag-chain tag-bera">BERA</span> <strong>at 153.7% APY / 98% util</strong> — Tiny pool ($100K) but maxed out. Someone really wants to borrow iBERA.</p>
+          <p><strong>oriBGT</strong> <span class="tag-chain tag-bera">BERA</span> <strong>at 105.6% APY</strong> — Berachain governance play. High incentives pulling in degens.</p>
         </div>
         <div>
           <p style="font-family:var(--font-mono);font-size:11px;color:var(--purple);margin-bottom:6px;">📊 BIG MOVES (72H)</p>
-          <p><strong>Re7 Labs deposited $5.68M USD1</strong> in 19 separate transactions — consistent, programmatic deposits every few hours. Vault curator behavior confirmed.</p>
-          <p><strong>Genesect churned $17.4M</strong> across 29 transactions — constant LST rebalancing (WBTC/USDC/weETH). Largest single move: $1.74M wstETH withdrawal followed immediately by $1.71M weETH deposit. Active leverage management.</p>
-          <p><strong>Toxtricity dropped $1.52M USDC</strong> in a single shot. Previous position was $7.5M — increasing exposure.</p>
+          <p><strong>Re7 Labs</strong> <span style="color:var(--muted);font-size:11px;">(greninja)</span> <span class="tag-unconfirmed">❓ UNCONFIRMED</span> <strong>deposited $5.68M USD1</strong> <span class="tag-chain tag-eth">ETH</span> in 19 separate transactions — consistent, programmatic deposits every few hours. Vault curator behavior confirmed.</p>
+          <p><strong>Genesect churned $17.4M</strong> <span class="tag-chain tag-eth">ETH</span> across 29 transactions — constant LST rebalancing (WBTC/USDC/weETH). Largest single move: $1.74M wstETH withdrawal followed immediately by $1.71M weETH deposit. Active leverage management.</p>
+          <p><strong>Toxtricity dropped $1.52M USDC</strong> <span class="tag-chain tag-eth">ETH</span> in a single shot. Previous position was $7.5M — increasing exposure.</p>
           <p><strong>Net capital flow: +$8.2M</strong> — protocol is growing. More money coming in than going out across all chains.</p>
         </div>
       </div>
@@ -344,7 +349,7 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
       <h2>💥 28 Liquidations This Week — $636.8K Collateral Seized</h2>
       <p style="margin-bottom:12px;">Berachain dominates: <strong>23 of 28 liquidations</strong> ($636.2K) — mostly from the WBERA cascade on Feb 11. Ethereum was quiet (3 liqs, $100), Arbitrum even quieter (2 liqs, $600). The protocol handled the cascade cleanly, but Berachain remains the volatility hotspot.</p>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
         <div>
           <p style="font-family:var(--font-mono);font-size:11px;color:var(--green);margin-bottom:8px;">⚡ LIQUIDATOR BREAKDOWN</p>
           <div style="display:grid;grid-template-columns:auto 1fr auto;gap:0 12px;font-size:12px;align-items:baseline;">
@@ -374,14 +379,14 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 
     <div class="card c-rate">
       <h2>📈 Top Stablecoin Yields</h2>
-      <div class="rr"><span class="a">ETH USD1</span><span class="y">7.18%</span><span class="v">$167M TVL · 65.7% util</span></div>
-      <div class="rr"><span class="a">ARB USDC</span><span class="y">6.44%</span><span class="v">$6.6M TVL · 56.0% util</span></div>
-      <div class="rr"><span class="a">ETH USDC</span><span class="y">5.03%</span><span class="v">$110M TVL · 90.0% util</span></div>
-      <div class="rr"><span class="a">ARB USDT</span><span class="y">4.00%</span><span class="v">$3.2M TVL · 65.1% util</span></div>
-      <div class="rr"><span class="a">ETH USDT</span><span class="y">3.39%</span><span class="v">$4.4M TVL · 80.2% util</span></div>
-      <div class="rr"><span class="a">BERA USDC</span><span class="y">11.39%</span><span class="v">🔥 $4.3M TVL</span></div>
-      <div class="rr"><span class="a">BERA HONEY</span><span class="y">25.41%</span><span class="v">🔥🔥 $2.3M TVL</span></div>
-      <div class="rr"><span class="a">BERA savUSD</span><span class="y">8.08%</span><span class="v">$6.6M TVL · 0% util</span></div>
+      <div class="rr"><span class="a">USD1 <span class="tag-chain tag-eth">ETH</span></span><span class="y">7.18%</span><span class="v">$167M TVL · 65.7% util</span></div>
+      <div class="rr"><span class="a">USDC <span class="tag-chain tag-arb">ARB</span></span><span class="y">6.44%</span><span class="v">$6.6M TVL · 56.0% util</span></div>
+      <div class="rr"><span class="a">USDC <span class="tag-chain tag-eth">ETH</span></span><span class="y">5.03%</span><span class="v">$110M TVL · 90.0% util</span></div>
+      <div class="rr"><span class="a">USDT <span class="tag-chain tag-arb">ARB</span></span><span class="y">4.00%</span><span class="v">$3.2M TVL · 65.1% util</span></div>
+      <div class="rr"><span class="a">USDT <span class="tag-chain tag-eth">ETH</span></span><span class="y">3.39%</span><span class="v">$4.4M TVL · 80.2% util</span></div>
+      <div class="rr"><span class="a">USDC <span class="tag-chain tag-bera">BERA</span></span><span class="y">11.39%</span><span class="v">🔥 $4.3M TVL</span></div>
+      <div class="rr"><span class="a">HONEY <span class="tag-chain tag-bera">BERA</span></span><span class="y">25.41%</span><span class="v">🔥🔥 $2.3M TVL</span></div>
+      <div class="rr"><span class="a">savUSD <span class="tag-chain tag-bera">BERA</span></span><span class="y">8.08%</span><span class="v">$6.6M TVL · 0% util</span></div>
     </div>
 
     <div class="card c-rate">
@@ -392,17 +397,17 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);padding:4px 8px;border-bottom:1px solid var(--line);text-align:right;">AAVE</div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);padding:4px 8px;border-bottom:1px solid var(--line);text-align:right;">EDGE</div>
 
-        <div style="padding:6px 8px 6px 0;font-weight:600;">ETH USDC</div>
+        <div style="padding:6px 8px 6px 0;font-weight:600;">USDC <span class="tag-chain tag-eth">ETH</span></div>
         <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:800;">5.03%</div>
         <div style="padding:6px 8px;text-align:right;color:var(--muted);">2.31%</div>
         <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:700;">2.2×</div>
 
-        <div style="padding:6px 8px 6px 0;font-weight:600;">ETH USDT</div>
+        <div style="padding:6px 8px 6px 0;font-weight:600;">USDT <span class="tag-chain tag-eth">ETH</span></div>
         <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:800;">3.39%</div>
         <div style="padding:6px 8px;text-align:right;color:var(--muted);">1.81%</div>
         <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:700;">1.9×</div>
 
-        <div style="padding:6px 8px 6px 0;font-weight:600;">ARB USDC</div>
+        <div style="padding:6px 8px 6px 0;font-weight:600;">USDC <span class="tag-chain tag-arb">ARB</span></div>
         <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:800;">6.44%</div>
         <div style="padding:6px 8px;text-align:right;color:var(--muted);">1.89%</div>
         <div style="padding:6px 8px;text-align:right;color:var(--lime);font-weight:700;">3.4×</div>
