@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dolomite Intelligence Briefing — Feb 16, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Inter, -apple-system, sans-serif; color: #1a1a1a; background: #f8fafc; }
+.page { max-width: 960px; margin: 0 auto; padding: 24px 20px; }
+
+/* MASTHEAD */
+.masthead { text-align: center; border-bottom: 4px double #1a1a1a; padding-bottom: 10px; margin-bottom: 18px; }
+.masthead h1 { font-size: 36px; font-weight: 900; letter-spacing: -1.5px; line-height: 1; }
+.masthead .sub { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 3px; margin-top: 4px; }
+.masthead .meta { font-size: 11px; color: #999; margin-top: 6px; }
+.masthead a { color: #2563eb; text-decoration: none; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); color: white; padding: 18px 24px; border-radius: 10px; margin-bottom: 18px; display: flex; justify-content: space-around; align-items: center; }
+.hero-stat { text-align: center; }
+.hero-stat .num { font-size: 28px; font-weight: 800; line-height: 1.1; }
+.hero-stat .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.6; margin-top: 2px; }
+.hero-div { width: 1px; height: 44px; background: rgba(255,255,255,0.15); }
+
+/* GRID */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.full { grid-column: 1 / -1; }
+
+/* CARDS */
+.card { background: white; border-radius: 10px; padding: 16px; border-left: 4px solid #e5e7eb; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.card h2 { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 8px; }
+.card p { font-size: 12.5px; line-height: 1.55; color: #374151; margin-bottom: 5px; }
+.card p:last-child { margin-bottom: 0; }
+.card b, .card strong { color: #111; }
+.card a { color: #2563eb; text-decoration: none; }
+.card a:hover { text-decoration: underline; }
+
+/* CARD COLORS */
+.c-break { border-color: #ec4899; background: linear-gradient(135deg, #fdf2f8, #fff); }
+.c-break h2 { color: #db2777; }
+.c-rate { border-color: #10b981; }
+.c-rate h2 { color: #059669; }
+.c-liq { border-color: #ef4444; }
+.c-liq h2 { color: #dc2626; }
+.c-whale { border-color: #6366f1; }
+.c-whale h2 { color: #4f46e5; }
+.c-risk { border-color: #f97316; }
+.c-risk h2 { color: #ea580c; }
+.c-bd { border-color: #8b5cf6; }
+.c-bd h2 { color: #7c3aed; }
+.c-tweet { border-color: #0ea5e9; }
+.c-tweet h2 { color: #0284c7; }
+.c-action { border-color: #eab308; }
+.c-action h2 { color: #ca8a04; }
+
+/* RATE ROWS */
+.rr { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; border-bottom: 1px solid #f3f4f6; font-size: 12.5px; }
+.rr:last-of-type { border: none; }
+.rr .a { font-weight: 700; flex: 1; }
+.rr .y { color: #059669; font-weight: 800; width: 65px; text-align: right; }
+.rr .v { color: #9ca3af; font-size: 11px; width: 110px; text-align: right; }
+
+/* TAGS */
+.tag { display: inline-block; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; vertical-align: middle; letter-spacing: 0.3px; }
+.t-bd { background: #dbeafe; color: #1d4ed8; }
+.t-risk { background: #fee2e2; color: #991b1b; }
+.t-new { background: #d1fae5; color: #065f46; }
+.t-hot { background: #fef3c7; color: #92400e; }
+
+/* TWEET */
+.tweet { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 9px 12px; margin-bottom: 7px; font-size: 12px; color: #475569; line-height: 1.5; }
+.tweet:last-of-type { margin-bottom: 0; }
+.tweet .model { font-size: 10px; opacity: 0.6; }
+
+/* 3-COL ACTIONS */
+.actions-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.actions-grid h3 { font-size: 12px; font-weight: 800; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.3px; }
+.actions-grid p { font-size: 12px; line-height: 1.5; color: #374151; margin-bottom: 4px; }
+.ag-mkt h3 { color: #059669; }
+.ag-proto h3 { color: #7c3aed; }
+.ag-bd h3 { color: #2563eb; }
+
+/* FOOTER */
+.footer { text-align: center; font-size: 10px; color: #9ca3af; border-top: 1px solid #e5e7eb; padding-top: 10px; margin-top: 18px; letter-spacing: 0.5px; }
+.footer span { margin: 0 8px; }
+
+/* SMALL SCREEN */
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .actions-grid { grid-template-columns: 1fr; }
+  .hero { flex-wrap: wrap; gap: 12px; }
+  .hero-div { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="masthead">
+  <h1>DOLOMITE INTELLIGENCE</h1>
+  <div class="sub">3-Model Synthesis · Internal</div>
+  <div class="meta">February 16, 2026 &nbsp;|&nbsp; <a href="https://docs.google.com/spreadsheets/d/17FPVWjpq3vZ8vVCWwLaJvrybq597pNQvCfCTmTxN25A">Whale Registry ↗</a> &nbsp;|&nbsp; 🟣 Opus · 🟢 Codex · 🔵 Gemini</div>
+</div>
+
+<div class="hero">
+  <div class="hero-stat"><div class="num">$471.6M</div><div class="label">Total Supply</div></div>
+  <div class="hero-div"></div>
+  <div class="hero-stat"><div class="num">$259.4M</div><div class="label">Total Borrow</div></div>
+  <div class="hero-div"></div>
+  <div class="hero-stat"><div class="num">55.0%</div><div class="label">Utilization</div></div>
+  <div class="hero-div"></div>
+  <div class="hero-stat"><div class="num">3</div><div class="label">Active Chains</div></div>
+</div>
+
+<div class="grid">
+
+  <div class="card c-break full">
+    <h2>🔍 Breaking: $17.7M Mystery Depositor Identified — Likely Re7 Labs</h2>
+    <p><strong>Greninja (0x289c)</strong> traced to a vault curator operation via Arkham + Etherscan. Wallet chain: <strong>6+ signer Gnosis Safe multisig</strong> → ops wallet (0x3063) → Dolomite depositor. Uses <strong>Paxos custody</strong> (96%), deploys across Dolomite + Euler EVK + Morpho + Aave via CoW Protocol. Pattern matches <a href="https://re7.capital">Re7 Labs</a>, who run USD1 vaults on Euler. <span class="tag t-new">PENDING COREY CONFIRMATION</span></p>
+    <p><strong>Why it matters:</strong> If Re7, they're programmatically allocating to Dolomite as part of a multi-protocol yield strategy. A formal curator relationship = automatic depositor capital inflow.</p>
+  </div>
+
+  <div class="card c-rate">
+    <h2>📈 Rate Edge</h2>
+    <div class="rr"><span class="a">ETH USDC</span><span class="y">5.02%</span><span class="v">vs Aave 2.31%</span></div>
+    <div class="rr"><span class="a">ETH USD1</span><span class="y">7.34%</span><span class="v">util 66.4%</span></div>
+    <div class="rr"><span class="a">ARB USDC</span><span class="y">6.37%</span><span class="v">vs Aave 1.89%</span></div>
+    <div class="rr"><span class="a">BERA USDC</span><span class="y">11.39%</span><span class="v">🔥 incentives</span></div>
+    <div class="rr"><span class="a">BERA HONEY</span><span class="y">25.41%</span><span class="v">🔥🔥</span></div>
+    <p style="margin-top:8px;font-size:11px;color:#6b7280;">🔵 Hooks: "Double Aave's yield" (ETH USDC) · "3× Aave" (ARB USDC)</p>
+  </div>
+
+  <div class="card c-liq">
+    <h2>💥 Liquidations · 29 This Week</h2>
+    <p><strong>Berachain WBERA cascade (Feb 11):</strong> 20+ liquidations, ~$530-630K collateral. Protocol handled it cleanly — canary for Bera volatility.</p>
+    <p>Berachain = liquidation hotspot. ETH = quiet (stable carry dominates).</p>
+    <p><strong>Insight:</strong> Bera users are incentive chasers. ETH users are structured leverage. Two separate funnels, two separate messaging strategies.</p>
+  </div>
+
+  <div class="card c-whale">
+    <h2>🏛️ WLFI — $240M Titan</h2>
+    <p><span class="tag t-risk">CONCENTRATION RISK</span> <a href="https://debank.com/profile/0x5be9a4959308a0d0c7bc0870e319314d8d957dbb">$240.3M supply / $170.8M borrow</a> on ETH. LTV 67-76%. Their activity <strong>sets utilization and rates</strong> for ETH stables.</p>
+    <p><strong>Watch for:</strong> borrow reduction → rate collapse · supply withdrawal → liquidity stress · USD1↔USDC pivot</p>
+    <p style="font-size:11px;">🟣 Build weekly WLFI posture panel: impact of 25/50/75% borrow reduction on USDC APY.</p>
+  </div>
+
+  <div class="card c-whale">
+    <h2>🐸 Greninja — $17.7M Organic</h2>
+    <p><span class="tag t-bd">TOP BD TARGET</span> <a href="https://debank.com/profile/0x289c204b35859bfb924b9c0759a4fe80f610671c">USD1 supply-only</a>. Deposited ~$4M in last 72h via frequent tranches. Likely <strong>Re7 Labs</strong> vault curator.</p>
+    <p>Gnosis Safe multisig · Paxos custody · Multi-protocol yield rotation (Dolomite + Euler + Morpho + Aave) · 271 days active, peaked $28M.</p>
+  </div>
+
+  <div class="card c-risk">
+    <h2>⚠️ Risk Radar</h2>
+    <p><strong>LST depeg exposure:</strong> Multiple $M+ positions at 86-88% LTV (Genesect $10.5M, Aegislash $8.6M). A 3-4% adverse move = cascading liquidations.</p>
+    <p><strong>ETH USDC util at 90%:</strong> Withdrawals constrained, rate vol persists until new supply arrives.</p>
+    <p style="font-size:11px;">🟣 Message externally: "high yields = real demand." Monitor correlated LST moves internally.</p>
+  </div>
+
+  <div class="card c-bd">
+    <h2>🎯 BD Targets</h2>
+    <p><strong>1. Greninja / Re7 Labs</strong> — Formal curator relationship. Get into their vault allocation. <span class="tag t-bd">HIGH PRIORITY</span></p>
+    <p><strong>2. Genesect</strong> (<a href="https://debank.com/profile/0x8be4">0x8be4</a>) — LST Leverage King, $10.5M. Proactive risk tooling = retention.</p>
+    <p><strong>3. Aegislash</strong> (<a href="https://debank.com/profile/0x53cc">0x53cc</a>) — $8.6M wstETH. Same LST looper cohort.</p>
+  </div>
+
+  <div class="card c-tweet full">
+    <h2>🐦 Tweet Drafts — Ready to Post</h2>
+    <div class="tweet"><span class="model">🟣 Opus</span><br>Dolomite ETH USDC supply is 5.0% right now vs Aave ~2.3%. That's ~2.2x yield on one of the deepest stable markets in DeFi.</div>
+    <div class="tweet"><span class="model">🟢 Codex</span><br>Arbitrum USDC on Dolomite is ~6.4% supply vs Aave ~1.9%. That's ~3.4x the yield. Same asset, same chain, wildly different outcomes.</div>
+    <div class="tweet"><span class="model">🔵 Gemini</span><br>Berachain stables are spicy. Dolomite USDC supply ~11.4% and HONEY ~25% today. High incentives, real borrow demand, real volatility. Know your risk.</div>
+  </div>
+
+  <div class="card c-action full">
+    <h2>✅ Recommended Actions</h2>
+    <div class="actions-grid">
+      <div class="ag-mkt">
+        <h3>Marketing</h3>
+        <p>1. Lead with yield spreads — "Double Aave" on ETH, "3× Aave" on ARB</p>
+        <p>2. Segment Berachain messaging with volatility disclaimers</p>
+      </div>
+      <div class="ag-proto">
+        <h3>Protocol</h3>
+        <p>1. High-LTV cluster monitoring for LST loopers (Genesect/Aegislash)</p>
+        <p>2. ETH USDC 90% util — supply onboarding paths + liquidity messaging</p>
+      </div>
+      <div class="ag-bd">
+        <h3>Business Dev</h3>
+        <p>1. Confirm + outreach Greninja (Re7 Labs?). Formal allocation target.</p>
+        <p>2. Proactive outreach to LST leverage cohort — risk tooling as retention</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>🟣 Opus (strategic depth)</span>
+  <span>🟢 Codex (quant rigor)</span>
+  <span>🔵 Gemini (unique angles)</span>
+  <span>Unmarked = consensus</span>
+  <br>Generated by Gus · Dolomite Intelligence System
+</div>
+
+</div>
+</body>
+</html>
