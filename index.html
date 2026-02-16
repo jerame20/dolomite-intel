@@ -132,7 +132,7 @@ html[data-theme="altavista"] {
   --accent-action:#92400e;
 }
 
-/* Minimal (my idea): ultra-clean, lots of whitespace but compact typography */
+/* Minimal: ultra-clean, lots of whitespace but compact typography */
 html[data-theme="minimal"] {
   --bg: #ffffff;
   --line: #e5e7eb;
@@ -141,6 +141,138 @@ html[data-theme="minimal"] {
   --card-radius: 12px;
   --shadow: 0 8px 22px rgba(0,0,0,0.06);
 }
+
+/* Financial Times: salmon pink, serif headlines, authoritative */
+html[data-theme="ft"] {
+  --bg: #fff1e5;
+  --text: #33302e;
+  --muted: #73655e;
+  --line: #e0cdbf;
+  --shadow: 0 1px 2px rgba(0,0,0,0.04);
+  --masthead-border: 2px solid #33302e;
+  --masthead-title-font: var(--font-serif);
+  --masthead-title-weight: 800;
+  --masthead-title-size: 34px;
+  --masthead-sub-letter: 2px;
+  --hero-bg: linear-gradient(135deg, #262a33 0%, #1a1a2e 100%);
+  --card-bg: #fff9f2;
+  --card-border: #e0cdbf;
+  --card-radius: 4px;
+  --card-pad: 14px;
+  --link: #0d7680;
+  --accent-break: #c00;
+  --accent-rate: #0d7680;
+  --accent-liq: #c00;
+  --accent-whale: #0f5499;
+  --accent-risk: #a0522d;
+  --accent-bd: #593380;
+  --accent-tweet: #0d7680;
+  --accent-action: #8b6914;
+  --chip-bg: rgba(13,118,128,0.08);
+  --chip-text: #0d7680;
+}
+
+/* Drudge Report: stark, monospace, no frills, all signal */
+html[data-theme="drudge"] {
+  --bg: #ffffff;
+  --text: #000000;
+  --muted: #555;
+  --line: #000;
+  --shadow: 0 0 0 transparent;
+  --masthead-border: 3px solid #000;
+  --masthead-title-font: var(--font-mono);
+  --masthead-title-weight: 900;
+  --masthead-title-size: 32px;
+  --masthead-sub-letter: 4px;
+  --hero-bg: #000;
+  --hero-text: #fff;
+  --card-bg: #fff;
+  --card-border: #ccc;
+  --card-radius: 0;
+  --card-pad: 12px;
+  --link: #c00;
+  --accent-break: #c00;
+  --accent-rate: #006600;
+  --accent-liq: #c00;
+  --accent-whale: #000080;
+  --accent-risk: #c00;
+  --accent-bd: #660066;
+  --accent-tweet: #006;
+  --accent-action: #660;
+  --chip-bg: #f0f0f0;
+  --chip-text: #c00;
+}
+html[data-theme="drudge"] body { font-family: var(--font-mono); font-size: 12px; }
+html[data-theme="drudge"] .hero { border-radius: 0; }
+html[data-theme="drudge"] .card h2 { font-size: 14px; letter-spacing: 0; text-decoration: underline; }
+
+/* Hacker News: beige, minimal, link-list feel */
+html[data-theme="hackernews"] {
+  --bg: #f6f6ef;
+  --text: #000;
+  --muted: #828282;
+  --line: #e0d8ce;
+  --shadow: 0 0 0 transparent;
+  --masthead-border: 2px solid #ff6600;
+  --masthead-title-font: var(--font-sans);
+  --masthead-title-weight: 700;
+  --masthead-title-size: 28px;
+  --masthead-sub-letter: 1px;
+  --hero-bg: #ff6600;
+  --hero-text: #fff;
+  --card-bg: #f6f6ef;
+  --card-border: #e0d8ce;
+  --card-radius: 2px;
+  --card-pad: 12px;
+  --link: #000;
+  --accent-break: #ff6600;
+  --accent-rate: #000;
+  --accent-liq: #ff6600;
+  --accent-whale: #000;
+  --accent-risk: #ff6600;
+  --accent-bd: #000;
+  --accent-tweet: #000;
+  --accent-action: #ff6600;
+  --chip-bg: rgba(255,102,0,0.1);
+  --chip-text: #ff6600;
+}
+html[data-theme="hackernews"] .hero { border-radius: 2px; }
+html[data-theme="hackernews"] .card { border-left-width: 3px; }
+
+/* Cyberpunk: neon purple/pink on dark, sci-fi feel */
+html[data-theme="cyberpunk"] {
+  --bg: #0d0221;
+  --page-bg: #0d0221;
+  --text: #e0d4f7;
+  --muted: #a78bfa;
+  --line: rgba(167,139,250,0.25);
+  --shadow: 0 0 12px rgba(167,139,250,0.08);
+  --masthead-border: 1px solid rgba(236,72,153,0.5);
+  --masthead-title-font: var(--font-mono);
+  --masthead-title-weight: 900;
+  --masthead-title-size: 30px;
+  --masthead-sub-letter: 4px;
+  --hero-bg: linear-gradient(135deg, #1a0533 0%, #2d0a4e 50%, #0d0221 100%);
+  --hero-text: #f0abfc;
+  --card-bg: rgba(13,2,33,0.8);
+  --card-border: rgba(167,139,250,0.3);
+  --card-radius: 2px;
+  --card-pad: 14px;
+  --link: #f472b6;
+  --accent-break: #f472b6;
+  --accent-rate: #34d399;
+  --accent-liq: #fb7185;
+  --accent-whale: #a78bfa;
+  --accent-risk: #fbbf24;
+  --accent-bd: #c084fc;
+  --accent-tweet: #67e8f9;
+  --accent-action: #fbbf24;
+  --chip-bg: rgba(244,114,182,0.12);
+  --chip-text: #f472b6;
+}
+html[data-theme="cyberpunk"] body { font-family: var(--font-mono); }
+html[data-theme="cyberpunk"] .hero-stat .num { text-shadow: 0 0 12px rgba(244,114,182,0.4); }
+html[data-theme="cyberpunk"] .masthead h1 { background: linear-gradient(90deg, #f472b6, #a78bfa, #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
 /* ----------------------------
    BASE LAYOUT
@@ -252,11 +384,15 @@ html[data-theme="terminal"] .masthead a { text-decoration: underline; }
     <div class="theme-chooser">
       <label for="theme">Style</label>
       <select id="theme" name="theme">
-        <option value="newspaper">Newspaper (default)</option>
-        <option value="bloomberg">Bloomberg (site)</option>
-        <option value="terminal">Bloomberg Terminal</option>
-        <option value="altavista">AltaVista (retro)</option>
-        <option value="minimal">Minimal</option>
+        <option value="newspaper">📰 Newspaper</option>
+        <option value="bloomberg">📊 Bloomberg</option>
+        <option value="terminal">🖥️ Terminal</option>
+        <option value="altavista">🔍 AltaVista</option>
+        <option value="minimal">✨ Minimal</option>
+        <option value="ft">📋 Financial Times</option>
+        <option value="drudge">🚨 Drudge Report</option>
+        <option value="hackernews">🟠 Hacker News</option>
+        <option value="cyberpunk">💜 Cyberpunk</option>
       </select>
     </div>
   </div>
