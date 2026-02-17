@@ -193,6 +193,22 @@ html[data-theme="cyberpunk"] .masthead h1 { font-family:var(--font-mono); font-w
 html[data-theme="cyberpunk"] .hero { background:linear-gradient(135deg,#1a0533,#2d0a4e,#0d0221); border-color:rgba(167,139,250,0.3); }
 html[data-theme="cyberpunk"] .hero-stat .num { text-shadow:0 0 12px rgba(244,114,182,0.4); }
 html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color:rgba(167,139,250,0.3); }
+/* injected by generate_report.py --render */
+.card {
+  margin: 0 auto 24px auto;
+  max-width: 1100px;
+  padding: 20px 24px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.card > * { max-width: 100%; }
+.card p { line-height: 1.6; margin: 0 0 8px 0; }
+.card strong { color: var(--purple); }
+.card hr { border: 0; border-top: 1px solid var(--line); margin: 16px 0; }
+@media (max-width: 900px) {
+  .anoms-grid { grid-template-columns: 1fr !important; }
+}
+
 </style>
 </head>
 <body>
@@ -268,44 +284,40 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
   <div class="grid">
     <div class="card c-break full">
       <h2>⚡ What Stuck Out This Week</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;"><div><p><strong>🔴 USDC <code>ETH</code> Utilization at 90.1% — CRITICAL</strong></p>
-<p>USDC on Ethereum is at <strong>90.1% utilization</strong> with $99.7M borrowed against $110.6M supplied. Supply rate is 5.03% but the borrow rate has climbed to 5.88%. At 90%+ utilization, suppliers may face withdrawal delays and rates become volatile. A few large withdrawals could push utilization into the danger zone (&gt;95%), triggering rate spikes that could cascade into liquidations.</p>
-<p><strong>🔴 WBERA <code>BERA</code> at 82% Utilization, 99% Borrow Rate</strong></p>
-<p>WBERA on Berachain has a <strong>99% borrow rate</strong> and <strong>67% supply rate</strong> at 82% utilization. Only $1.67M supplied. The Feb 11 WBERA crash triggered a cascade of liquidations (see Section 4). 🔵 If utilization hits 100%, liquidations cannot occur effectively and withdrawals pause — need to attract WBERA supply immediately.</p>
-<p><strong>🔴 iBERA <code>BERA</code> at 98.5% Utilization — Nearly Frozen</strong></p>
-<p>$62.8K borrowed against $63.7K supplied. 192% borrow rate, 154% supply rate. This market is effectively tapped out. 🟢 Any supplier withdrawal risk is acute and borrow costs are extreme — a magnet for liquidations and a potential reputational hazard if users perceive &quot;can&#x27;t withdraw.&quot;</p>
-<p><strong>🟡 USDT <code>ETH</code> Utilization at 82.8%</strong></p>
-<p>$3.6M borrowed against $4.3M supplied. Supply APY of 3.62% is lower than USDC despite higher utilization — suggests the interest rate curve may need adjustment.</p>
-<p><strong>🟡 rUSD <code>BERA</code> at 100.1% Utilization</strong></p>
-<p>🟢 Utilization &gt;100% (rounding) is a red flag for tight liquidity. If this is a meaningful asset for Berachain users, consider parameter review.</p>
-<p><strong>🟡 LINK <code>ARB</code> at 83.7% Utilization</strong></p>
-<p>🟢 17.65% supply / 24.82% borrow — this is a real &quot;activity&quot; market (not dust). Likely leveraged loop behavior; also means LINK liquidations on Arbitrum will cluster during drawdowns.</p>
-<p><strong>🟢 Re7 Labs (Greninja) Massive USD1 Accumulation</strong></p>
-<p>[Re7 Labs (Greninja)](https://debank.com/profile/<a href="https://debank.com/profile/0x289c204b35859bfb924b9c0759a4fe80f610671c" target="_blank">Re7 Labs (unconfirmed — pending Corey verification) (greninja)</a>) deposited <strong>~$7.7M in USD1</strong> over the 14-day period across 30+ transactions, each $100K–$1M. Total portfolio: $17.7M supply, $0 borrows. Pure supply-only behavior — the most active whale by event count (111 events, $34.1M total volume). 🔵 Wallet structure matches Re7 operational patterns — likely testing waters before scaling or starting borrows.</p>
-<p><strong>🟢 Massive USD1 Outflows from Multiple Wallets (Feb 9)</strong></p>
-<p>Several wallets withdrew large USD1 positions on Feb 9:</p>
+<div class="anoms-grid" style="display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;">
+<div class="mini-card" style="padding:14px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);">
+<p style="margin:0 0 8px 0;font-weight:900;letter-spacing:0.2px;">🔴 Critical</p>
 <ul>
+<li>### 🔴 USDC <code>ETH</code> Utilization at 90.1% — CRITICAL USDC on Ethereum is at <strong>90.1% utilization</strong> with $99.7M borrowed against $110.6M supplied. Supply rate is 5.03% but the borrow rate has climbed to 5.88%. At 90%+ utilization, suppliers may face withdrawal delays and rates become volatile. A few large withdrawals could push utilization into the danger zone (&gt;95%), triggering rate spikes that could cascade into liquidations.</li>
+<li>### 🔴 WBERA <code>BERA</code> at 82% Utilization, 99% Borrow Rate WBERA on Berachain has a <strong>99% borrow rate</strong> and <strong>67% supply rate</strong> at 82% utilization. Only $1.67M supplied. The Feb 11 WBERA crash triggered a cascade of liquidations (see Section 4). 🔵 If utilization hits 100%, liquidations cannot occur effectively and withdrawals pause — need to attract WBERA supply immediately.</li>
+<li>### 🔴 iBERA <code>BERA</code> at 98.5% Utilization — Nearly Frozen $62.8K borrowed against $63.7K supplied. 192% borrow rate, 154% supply rate. This market is effectively tapped out. 🟢 Any supplier withdrawal risk is acute and borrow costs are extreme — a magnet for liquidations and a potential reputational hazard if users perceive &quot;can&#x27;t withdraw.&quot;</li>
+<li>### 🟡 USDT <code>ETH</code> Utilization at 82.8% $3.6M borrowed against $4.3M supplied. Supply APY of 3.62% is lower than USDC despite higher utilization — suggests the interest rate curve may need adjustment.</li>
+<li>### 🟡 rUSD <code>BERA</code> at 100.1% Utilization 🟢 Utilization &gt;100% (rounding) is a red flag for tight liquidity. If this is a meaningful asset for Berachain users, consider parameter review.</li>
+<li>### 🟡 LINK <code>ARB</code> at 83.7% Utilization 🟢 17.65% supply / 24.82% borrow — this is a real &quot;activity&quot; market (not dust). Likely leveraged loop behavior; also means LINK liquidations on Arbitrum will cluster during drawdowns.</li>
+<li>### 🟢 $2M USDC Exit from Ethereum (Feb 10) 🟣 Address <code><a href="https://debank.com/profile/0x815f5bb257e88b67216a344c7c83a3ea4ee74748" target="_blank">0x815f…4748</a></code> withdrew $2M USDC in 3 transactions. Address <code><a href="https://debank.com/profile/0x27326bd8e518183c5266b031cf90734e17dc4800" target="_blank">0x2732…4800</a></code> withdrew $1.79M USDC + $990K USD1. These contributed to the high USDC utilization.</li>
+</ul>
+</div>
+<div class="mini-card" style="padding:14px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);">
+<p style="margin:0 0 8px 0;font-weight:900;letter-spacing:0.2px;">🐋 Whale Moves</p>
+<ul>
+<li>### 🟢 Re7 Labs (Greninja) Massive USD1 Accumulation [Re7 Labs (Greninja)](https://debank.com/profile/<a href="https://debank.com/profile/0x289c204b35859bfb924b9c0759a4fe80f610671c" target="_blank">Re7 Labs (unconfirmed — pending Corey verification) (greninja)</a>) deposited <strong>~$7.7M in USD1</strong> over the 14-day period across 30+ transactions, each $100K–$1M. Total portfolio: $17.7M supply, $0 borrows. Pure supply-only behavior — the most active whale by event count (111 events, $34.1M total volume). 🔵 Wallet structure matches Re7 operational patterns — likely testing waters before scaling or starting borrows.</li>
+<li>### 🟢 Massive USD1 Outflows from Multiple Wallets (Feb 9) Several wallets withdrew large USD1 positions on Feb 9:</li>
 <li><a href="https://etherscan.io/address/[Raikou](https://debank.com/profile/0xc5b2359fe6b4a7118b67b116069ca2e7cf3ccc27" target="_blank">Raikou</a>): $3M USD1 withdrawn in 3 txns</li>
 <li><a href="https://etherscan.io/address/[Koraidon](https://debank.com/profile/0x351574d133a0fb7f0e9491f4d11138d91deeef66" target="_blank">Koraidon</a>): $1.8M USD1 withdrawn</li>
 <li>Multiple $100K–$800K USD1 withdrawals from other wallets</li>
 </ul>
-<p>🟣 These appear to be carry trade unwinds (supply USD1 → borrow USDC/USDT → capture spread). When the spread narrows, these positions close. Monitor if re-entering.</p>
-<p><strong>🟢 $2M USDC Exit from Ethereum (Feb 10)</strong></p>
-<p>🟣 Address <code><a href="https://debank.com/profile/0x815f5bb257e88b67216a344c7c83a3ea4ee74748" target="_blank">0x815f…4748</a></code> withdrew $2M USDC in 3 transactions. Address <code><a href="https://debank.com/profile/0x27326bd8e518183c5266b031cf90734e17dc4800" target="_blank">0x2732…4800</a></code> withdrew $1.79M USDC + $990K USD1. These contributed to the high USDC utilization.</p>
-<p><strong>Strategy Clusters</strong></p>
+</div>
+<div class="mini-card" style="padding:14px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);">
+<p style="margin:0 0 8px 0;font-weight:900;letter-spacing:0.2px;">📊 Patterns</p>
 <ul>
+<li>🟣 These appear to be carry trade unwinds (supply USD1 → borrow USDC/USDT → capture spread). When the spread narrows, these positions close. Monitor if re-entering.</li>
+<li>### Strategy Clusters</li>
 <li><strong>ETH LST leverage loops</strong> remain the most active &quot;power-user&quot; strategy on Ethereum, with repeated swaps between wstETH ↔ weETH while managing WETH debt (Genesect + Aegislash + Mimikyu). 🟢 This is exactly where Dolomite&#x27;s margin-account UX + zap routing should win.</li>
 <li><strong>USD1 carry</strong> is still the dominant stable strategy on Ethereum (WLFI + multiple mid-size clones). 🟢 USD1 is now a *protocol-level product line* — treat it like a core market.</li>
 </ul>
-<p><strong>Net Flow Summary (14d)</strong></p>
-<div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
-<tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Chain</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Dominant Direction</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Key Tokens</th></tr>
-<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>Ethereum</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">NET OUTFLOW ↓ (14d) / NET INFLOW ↑ (72h)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">USD1 massive inflows ($7.7M+ from Greninja), offset by USDC/USDT outflows</td></tr>
-<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>Berachain</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">NET INFLOW ↑ (14d) / SLIGHT OUTFLOW (72h)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">savUSD deposits cycling against USDₜ0 borrowing; large WBERA liquidation-driven outflows</td></tr>
-<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>Arbitrum</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">NET OUTFLOW ↓</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">USDC withdrawals from multiple wallets; dGM deposits provide some offset</td></tr>
-</table></div>
-<p>---</p></div><div></div></div>
-    </div>
+</div>
+</div>
+</div>
 
 <div class="card c-whale full">
       <h2>🐋 72-Hour Capital Flows — $22.1M in, $13.9M out (net +$8.2M)</h2>
@@ -351,34 +363,51 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 <p>🟣 Large Arbitrum USDC flows — withdrew $283K and $129K USDC on Feb 6. Active Arbitrum whale.</p>
 <p><strong>10. <a href="https://debank.com/profile/[Crobat](https://debank.com/profile/0x7c9063122c01837fe83da2521056e10c9b6dd129" target="_blank">Crobat</a>) — 10 events, $10M volume | Berachain</strong></p>
 <p>🟣 Feb 11: Withdrew $1M USDe, immediately re-deposited $1M USDe — likely a position refresh or contract interaction.</p>
-<p>---</p>
-    </div>
+</div>
 
 <div class="card c-liq full">
-      <h2>💥 28 Liquidations This Week — $636.8K Collateral Seized</h2>
-      <p style="margin-bottom:12px;">Berachain dominates: <strong>23 of 28 liquidations</strong> ($636.2K) — mostly from the WBERA cascade on Feb 11. Ethereum was quiet (3 liqs, $100), Arbitrum even quieter (2 liqs, $600). The protocol handled the cascade cleanly, but Berachain remains the volatility hotspot.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
-        <div>
-          <p style="font-family:var(--font-mono);font-size:11px;color:var(--green);margin-bottom:8px;">⚡ LIQUIDATOR BREAKDOWN</p>
-          <div style="display:grid;grid-template-columns:auto 1fr auto;gap:0 12px;font-size:12px;align-items:baseline;">
-            <span class="liq-bot"><a href="https://debank.com/profile/0x1ff6b8e1192eb0369006bbad76da9068b68961b2" target="_blank">Dolomite Bot</a></span><span style="color:var(--muted);">15 liqs</span><span style="text-align:right;font-weight:600;">$37.0K</span>
-            <span class="liq-bot"><a href="https://debank.com/profile/0xe18574afe36e6ae25ff0e3cba61a03ddf" target="_blank">External (0xe185)</a></span><span style="color:var(--muted);">10 liqs</span><span style="text-align:right;font-weight:600;">$599.7K</span>
-            <span class="liq-bot"><a href="https://etherscan.io/address/0xb0bccdf9f32c78f9decf9d896dae1f25ed7cd3bf" target="_blank">Other (0xb0bc)</a></span><span style="color:var(--muted);">3 liqs</span><span style="text-align:right;font-weight:600;">$0.1K</span>
-          </div>
-        </div>
-        <div>
-          <p style="font-family:var(--font-mono);font-size:11px;color:var(--green);margin-bottom:8px;">📊 BY CHAIN</p>
-          <div style="display:grid;grid-template-columns:auto 1fr auto;gap:0 12px;font-size:12px;align-items:baseline;">
-            <span>Berachain</span><span style="color:var(--muted);">23 liqs</span><span style="text-align:right;font-weight:600;">$636.2K</span>
-            <span>Ethereum</span><span style="color:var(--muted);">3 liqs</span><span style="text-align:right;font-weight:600;">$0.1K</span>
-            <span>Arbitrum</span><span style="color:var(--muted);">2 liqs</span><span style="text-align:right;font-weight:600;">$0.6K</span>
-          </div>
-        </div>
-      </div>
-
-      <p style="margin-top:12px;font-size:12px;color:var(--muted);">💡 <strong>Note:</strong> External bot 0xe185 grabbed the big Berachain cascade ($599.7K) — Dolomite's bot handled the smaller ones. Worth investigating if Dolomite's bot missed the cascade or was outbid on gas.</p>
-    </div>
+      <h2>💥
+<p><strong>Summary</strong></p>
+<ul>
+<li><strong>Total liquidations:</strong> 120 events across 14 days</li>
+<li><strong>Total liquidated value:</strong> ~$683K (borrowed side)</li>
+<li><strong>Total liquidator profit:</strong> ~$116K</li>
+</ul>
+<p>Liquidation activity is overwhelmingly Berachain + Arbitrum, consistent with higher-volatility collateral sets. Ethereum liquidations are relatively quiet *despite* high leverage loops — meaning ETH whales are actively managing health *for now*.</p>
+<p><strong>By Chain</strong></p>
+<div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
+<tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Chain</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Count</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Largest Single Event</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Key Pairs</th></tr>
+</table></div>
+<div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
+<tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;"><strong>Berachain</strong></th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">~80</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">$225.9K (WBERA→USDC.e)</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">WBERA/USDC.e, WBERA/USDₜ0, USDC.e/diBGT</th></tr>
+<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>Arbitrum</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">~30</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$175.6K (USDC→WETH)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">USDC/WETH, USDC/PENDLE, USDC/WBTC</td></tr>
+<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>Ethereum</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">~10</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$4K (USD1→WLFI)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">USD1/WLFI (tiny), USDC/WETH</td></tr>
+</table></div>
+<p><strong>🔴 The WBERA Crash of Feb 11 — Biggest Liquidation Event</strong></p>
+<p>On February 11 around 22:00–22:30 UTC, WBERA experienced a sharp price decline that triggered a <strong>cascade of liquidations on Berachain</strong>:</p>
+<p>1. <strong><a href="https://berascan.com/address/[Deoxys](https://debank.com/profile/0x54dc6782d6fc5fc05f8486d365186ff25cc44ba7" target="_blank">Deoxys</a>)</strong> — $225.9K borrowed WBERA liquidated, USDC.e collateral seized. $40.7K liquidator profit.</p>
+<p>2. <strong><a href="https://berascan.com/address/[Garchomp](https://debank.com/profile/0xd53ca15dbad9a786792f4fb254dd8e6a459b31c4" target="_blank">Garchomp</a>)</strong> — $91.5K WBERA liquidated, USDC.e seized. $16.5K profit.</p>
+<p>3. <strong><a href="https://berascan.com/address/[Latios](https://debank.com/profile/0x05da99a2f19fd1b18247435d738698f3b11a69bf" target="_blank">Latios</a>)</strong> — $74K WBERA liquidated, WETH collateral seized. $15.5K profit.</p>
+<p>4. <strong><a href="https://berascan.com/address/[Jirachi](https://debank.com/profile/0x81e5cd02af0b76b6a3b5c1cc2ba7657eb8183850" target="_blank">Jirachi</a>)</strong> — $52K WBERA liquidated, USDₜ0 seized. $10.9K profit.</p>
+<p>5. <strong><a href="https://berascan.com/address/[Lucario](https://debank.com/profile/0x3c4ae04242a7f1f74a428e0d6439f070b2cd91d2" target="_blank">Lucario</a>)</strong> — $51.7K WBERA liquidated, USDₜ0 seized. $10.9K profit.</p>
+<p><strong>Total from the Feb 11 cascade: ~$530K liquidated, ~$100K liquidator profit.</strong> Protocol health held — no bad debt.</p>
+<p><strong>Largest Arbitrum Liquidation</strong></p>
+<p><a href="https://arbiscan.io/address/[Zoroark](https://debank.com/profile/0xb137d135dc8482b633265c21191f50a4ba26145d" target="_blank">Zoroark</a>) — $175.6K USDC borrowed, liquidated with WETH collateral. $8.8K liquidator profit. This was during the Feb 5 market volatility.</p>
+<p><strong>Liquidator Breakdown</strong></p>
+<div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
+<tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Liquidator</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Events</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Est. Rewards</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Notes</th></tr>
+</table></div>
+<div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
+<tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;"><a href="https://debank.com/profile/0xe18574afe358fae6f802b1fe57fd691e48a03ddf" target="_blank">[Latias</a>](https://debank.com/profile/<a href="https://debank.com/profile/0xe18574afe358fae6f802b1fe57fd691e48a03ddf" target="_blank">Latias</a>)</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">~40</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;"><strong>$101.2K</strong></th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Dominant profit-taker — captured the biggest Berachain liquidations</th></tr>
+<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><a href="https://debank.com/profile/0x1ff6b8e1192eb0369006bbad76da9068b68961b2" target="_blank">[0x1ff6…61b2</a>](https://debank.com/profile/<a href="https://debank.com/profile/0x1ff6b8e1192eb0369006bbad76da9068b68961b2" target="_blank">0x1ff6…61b2</a>) (Dolomite bot)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">~40–50</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$8.2K</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Sweeper bot — catches everything including dust ($0.01 liquidations)</td></tr>
+<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><a href="https://debank.com/profile/0xd2932ef386433afaedb2e0d68301eb07212bf26f" target="_blank">[Hydreigon</a>](https://debank.com/profile/<a href="https://debank.com/profile/0xd2932ef386433afaedb2e0d68301eb07212bf26f" target="_blank">Hydreigon</a>)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">~29</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$10.7K</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Primary Arbitrum liquidator — PENDLE, LINK, WBTC collateral</td></tr>
+<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><a href="https://debank.com/profile/0xb0bccdf9f32c78f9decf9d896dae1f25ed7cd3bf" target="_blank">[0xb0bc…d3bf</a>](https://debank.com/profile/<a href="https://debank.com/profile/0xb0bccdf9f32c78f9decf9d896dae1f25ed7cd3bf" target="_blank">0xb0bc…d3bf</a>)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">~6</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$10</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Ethereum &quot;small-ticket&quot; liquidator, WLFI-adjacent micro positions</td></tr>
+</table></div>
+<p>🟣 Note: external bot <code>0xe185...</code> grabbed <strong>$101K</strong> in rewards vs Dolomite&#x27;s bot at $8.2K. The external bot is effectively the &quot;market maker&quot; for bad debt prevention on Berachain.</p>
+<p>🟢 <strong>Liquidator Centralization Risk:</strong> If that dominant bot/operator goes down, liquidation efficiency could fall exactly when volatility hits. Ensure multiple independent liquidators are active.</p>
+<p><strong>Recurring Victim</strong></p>
+<p>🟣 Address <code><a href="https://debank.com/profile/0xa431f2022fc80c6694b1fc70de503e475e8b9f9f" target="_blank">0xa431…9f9f</a></code> (Berachain) was liquidated <strong>20+ times</strong> on Feb 6, all USDC.e→diBGT pair, each for $27–$114. Either a broken bot or someone stubbornly re-leveraging.</p>
+</div>
 
   </div>
 
@@ -389,10 +418,11 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
     <div class="card c-rate">
       <h2>📈 Top Stablecoin Yields (Supply APY)</h2>
 <p><strong>Top Stablecoin Supply APYs on Dolomite</strong></p>
-<p><strong>Competitor Comparison — Supply APY</strong></p>
 <div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
 <tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Asset</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Chain</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Supply APY</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Borrow APY</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Utilization</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">TVL</th></tr>
-<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">BYUSD <code>BERA</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Berachain</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>39.05%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">5.91%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">59.0%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$142K</td></tr>
+</table></div>
+<div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
+<tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">BYUSD <code>BERA</code></th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Berachain</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;"><strong>39.05%</strong></th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">5.91%</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">59.0%</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">$142K</th></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">HONEY <code>BERA</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Berachain</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>25.19%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">3.82%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">43.4%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$543K</td></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">rUSD <code>BERA</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Berachain</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>15.00%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">30.0%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">100.1%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$40K</td></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">USDC <code>BERA</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Berachain</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>11.30%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">4.83%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">54.9%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$4.6M</td></tr>
@@ -402,8 +432,13 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">USDC <code>ETH</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Ethereum</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>5.03%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">5.88%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">90.1%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$110.6M</td></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">USDT <code>ARB</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Arbitrum</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>4.00%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">—</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">65.1%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">—</td></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">USDT <code>ETH</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Ethereum</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>3.62%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">—</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">82.8%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$4.3M</td></tr>
-<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Asset</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Dolomite 🏔️</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Aave V3 👻</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Compound V3 📉</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Dolomite Edge</td></tr>
-<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>USDC</strong> <code>ETH</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>5.03%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">2.30%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">2.55%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>2.2× Aave</strong></td></tr>
+</table></div>
+<p><strong>Competitor Comparison — Supply APY</strong></p>
+<div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
+<tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Asset</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Dolomite 🏔️</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Aave V3 👻</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Compound V3 📉</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Dolomite Edge</th></tr>
+</table></div>
+<div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
+<tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;"><strong>USDC</strong> <code>ETH</code></th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;"><strong>5.03%</strong></th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">2.30%</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">2.55%</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;"><strong>2.2× Aave</strong></th></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>USDC</strong> <code>ARB</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>6.34%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">1.81%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">2.73%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>3.5× Aave</strong></td></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>USDC</strong> <code>BERA</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>11.30%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">N/A</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">N/A</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>Uncontested</strong></td></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>USDT</strong> <code>ETH</code></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>3.62%</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">1.82%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">2.45%</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>2.0× Aave</strong></td></tr>
@@ -444,8 +479,7 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 <p>🟣 Supply wstETH on Dolomite <code>ETH</code> (staking yield ~3.5% + 2.36% supply rate), borrow WETH at 1.91%. Net yield: ~3.95% on equity at 80% LTV, or <strong>~19.75% on equity</strong> at 5× leverage. Addressable size: $10M+ (WETH utilization only 57.9%). Risk: MEDIUM — LST depeg at high LTV. Multiple whales already running this.</p>
 <p><strong>Arb #6: savUSD→USDₜ0 Carry (Berachain)</strong></p>
 <p>🟣 Supply savUSD <code>BERA</code> at 8.08%, borrow USDₜ0. Beartic is running this at scale ($4M), suggesting profitable. Addressable size: $2–5M. Risk: MEDIUM — Berachain-native stablecoins have less Lindy than USDC.</p>
-<p>---</p>
-    </div>
+</div>
 
 <div class="card c-rate">
       <h2>⚔️ Dolomite vs Competitors</h2>
@@ -515,8 +549,7 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 <div class="tweet">&gt; The smart money is moving. 🧠</div>
 <div class="tweet">&gt; We tracked $17M+ in new stablecoin deposits from a single institutional wallet this week.</div>
 <div class="tweet">&gt; Zero borrows. Just pure, unadulterated yield farming on Dolomite.</div>
-<div class="tweet">---</div>
-    </div>
+</div>
 
 <div class="card c-action full">
       <h2>✅ What to Do This Week</h2>
@@ -553,14 +586,15 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 <p>   🔵 Target entities holding large idle USDC on Arbitrum. The 6.3% vs 1.8% spread is a &quot;free money&quot; pitch for any DAO treasury.</p>
 <p>5. <strong>Botanix Growth</strong></p>
 <p>   🟣 $6.5M TVL growing from zero. Only 334 users. The BTC L2 narrative is emerging — consider incentive programs or Botanix ecosystem partnerships.</p>
-<p>---</p>
-    </div>
+</div>
 
 <div class="card c-bd full">
       <h2>🎯 Priority Outreach List</h2>
 <div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
 <tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Priority</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Target</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Tag</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">Rationale</th></tr>
-<tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">🔴 HIGH</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">[Re7 Labs (Greninja)](https://debank.com/profile/<a href="https://debank.com/profile/0x289c204b35859bfb924b9c0759a4fe80f610671c" target="_blank">Re7 Labs (unconfirmed — pending Corey verification) (greninja)</a>)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>INVESTIGATE</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$17.7M supply-only, vault-like behavior. If Re7, pursue curator partnership. Multi-protocol (Euler, Morpho, Aave).</td></tr>
+</table></div>
+<div style="overflow-x:auto;margin:8px 0;"><table style="width:100%;border-collapse:collapse;font-size:12px;">
+<tr><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">🔴 HIGH</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">[Re7 Labs (Greninja)](https://debank.com/profile/<a href="https://debank.com/profile/0x289c204b35859bfb924b9c0759a4fe80f610671c" target="_blank">Re7 Labs (unconfirmed — pending Corey verification) (greninja)</a>)</th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;"><strong>INVESTIGATE</strong></th><th style="padding:6px 8px;border-bottom:2px solid var(--line);text-align:left;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.5px;">$17.7M supply-only, vault-like behavior. If Re7, pursue curator partnership. Multi-protocol (Euler, Morpho, Aave).</th></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">🔴 HIGH</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><a href="https://debank.com/profile/[Beartic](https://debank.com/profile/0x6cc60a0b57bc882a0471980d0e2d4ad7ddf3c4bd" target="_blank">Beartic</a>)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>INVESTIGATE</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$27M volume, 94 events, likely Avant strategy wallet. Largest organic Berachain user — integration target.</td></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">🔴 HIGH</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><a href="https://debank.com/profile/[Genesect](https://debank.com/profile/0x8be46b25d59616e594f0a9e20147fb14c1b989d9" target="_blank">Genesect</a>)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>INVESTIGATE</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">$103M total volume, 181 events. 17-chain DeFi power user. EIP-7702 bot infrastructure. Likely fund/desk. 🟢 Ask: what tooling reduces liquidation anxiety? Would they scale with better buffers?</td></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">🟡 MED</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><a href="https://debank.com/profile/[Aegislash](https://debank.com/profile/0x53cc1b407b9cb27efec629b35dbda04d05b4fa27" target="_blank">Aegislash</a>)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>INVESTIGATE</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">Large LST loop whale. 🟢 Ask: would they use zap/virtual liquidity for rebalances if surfaced better in UI?</td></tr>
@@ -571,8 +605,7 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">🟡 MED</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><a href="https://debank.com/profile/[Leafeon](https://debank.com/profile/0xa7bc411ce0add516ce453646788b3dcb62a24017" target="_blank">Leafeon</a>)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>NEW</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">🟣 $3.8M volume, 8 events. Deposited $1.5M USD1 on Feb 12. New entrant.</td></tr>
 <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">🟢 LOW</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><a href="https://etherscan.io/address/[Snorlax](https://debank.com/profile/0x452d05846ebd273cecdd6a809d8fe131e590080d" target="_blank">Snorlax (0x452d)</a>)</td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;"><strong>INVESTIGATE</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;">🟣 $9.3M WETH supply-only. Conservative 35% LTV. Likely fund/OTC desk.</td></tr>
 </table></div>
-<p>---</p>
-    </div>
+</div>
 
 <div class="card c-risk full">
       <h2>⚠️ Risk Radar</h2>
@@ -625,7 +658,5 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 </ul>
 <p><strong>🟢 MONITORING: Large USD1 Outflows (Feb 9)</strong></p>
 <p>🟣 Multiple wallets withdrew $5M+ in USD1 on Feb 9. Appears to be carry trade unwinding, not panic selling. USD1 supply remains massive at $167M. Continue monitoring for sustained outflow patterns.</p>
-<p>---</p>
-<p>*Report synthesized February 16, 2026. All data sourced from Dolomite protocol, DeFi Llama, and on-chain analysis. Attribution: 🟣 Opus · 🟢 Codex · 🔵 Gemini · Unmarked = consensus. Next report recommended in 14 days.*</p>
-    </div>
+</div>
 
