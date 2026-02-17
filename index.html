@@ -194,9 +194,34 @@ html[data-theme="cyberpunk"] .hero { background:linear-gradient(135deg,#1a0533,#
 html[data-theme="cyberpunk"] .hero-stat .num { text-shadow:0 0 12px rgba(244,114,182,0.4); }
 html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color:rgba(167,139,250,0.3); }
 /* injected by generate_report.py --render */
+
+/* ── Responsive newspaper grid ── */
+.grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+  margin-bottom: 14px;
+}
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (min-width: 1200px) {
+  .grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (min-width: 1800px) {
+  .grid { grid-template-columns: repeat(4, 1fr) !important; }
+}
+.full { grid-column: 1 / -1 !important; }
+.span-2 { grid-column: span 2; }
+@media (max-width: 767px) { .span-2 { grid-column: span 1; } }
+.span-3 { grid-column: span 3; }
+@media (max-width: 1199px) { .span-3 { grid-column: span 1; } }
+@media (min-width: 1200px) { .span-3 { grid-column: span 3; } }
+
+/* Remove old max-width so cards can fill grid cells */
 .card {
-  margin: 0 auto 24px auto;
-  max-width: 1100px;
+  margin: 0 !important;
+  max-width: none !important;
   padding: 20px 24px;
   border-radius: 12px;
   overflow: hidden;
@@ -210,6 +235,17 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 .card details summary { cursor: pointer; color: var(--teal); font-size: 12px; font-family: var(--font-mono); letter-spacing: 0.5px; padding: 4px 0; }
 .card details summary:hover { color: var(--lime); }
 .card details[open] summary { margin-bottom: 8px; }
+
+/* ── Capital flow bar ── */
+.flow-bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 8px 0; }
+.flow-in { background: var(--green, #22c55e); transition: width 0.3s; }
+.flow-out { background: var(--red, #ef4444); transition: width 0.3s; }
+.flow-labels { display: flex; justify-content: space-between; font-size: 12px; font-family: var(--font-mono); margin-bottom: 6px; }
+.flow-net { text-align: center; font-family: var(--font-mono); font-size: 16px; font-weight: 700; margin: 4px 0 8px; }
+
+/* ── Section label spanning ── */
+.section-label { grid-column: 1 / -1; }
+
 @media (max-width: 900px) {
   .anoms-grid { grid-template-columns: 1fr !important; }
 }
@@ -361,7 +397,7 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
   <div class="section-label">💥 Liquidation Intelligence</div>
   <div class="grid">
 
-    <div class="card c-liq full">
+    <div class="card c-liq">
       <h2>💥 120 Liquidations — $683K Seized</h2>
 <p><strong>Summary:</strong> 120 liquidations over 14 days — $683K total value</p>
 <p style='font-size:12px;'>Berachain dominates: 23 of 28 recent liquidations ($636K). The WBERA crash on Feb 11 was the main event. Ethereum was quiet despite high leverage — whales are managing positions actively.</p>
@@ -500,8 +536,10 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 
   <!-- ═══════ TWEETS ═══════ -->
   <div class="section-label">🐦 Tweet Drafts</div>
-  <div class="grid">
-    <div class="card c-tweet full">
+<div class="section-label">✅ Recommended Actions</div>
+<div class="grid">
+
+    <div class="card c-tweet">
       <h2>🐦 Ready to Post (≤280 chars)</h2>
 <div class="tweet" style="padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;"><div style="font-size:10px;color:var(--muted);margin-bottom:4px;"><span title="opus">🟣</span> Rate Flex · 105 chars</div><p style="font-size:13px;margin:0;white-space:pre-wrap;">earn 5% on USDC while aave pays 2.3%
 
@@ -533,12 +571,9 @@ monopoly is a strong word but...</p></div>
 We tracked $17M+ in new stablecoin deposits from a single institutional wallet this week.
 Zero borrows. Just pure, unadulterated yield farming on Dolomite.</p></div></details>
 </div>
-  </div>
+  
 
-  <!-- ═══════ RECOMMENDED ACTIONS ═══════ -->
-  <div class="section-label">✅ Recommended Actions</div>
-  <div class="grid">
-    <div class="card c-action full">
+    <div class="card c-action">
       <h2>✅ What to Do This Week</h2>
 <p style='font-weight:700;margin:12px 0 6px;'>📣 Marketing</p><ul style='padding-left:16px;'><li style='margin-bottom:6px;'><span title="codex">🟢</span> 🔥 <strong>USDC (ARB) Yield Gap Push</strong><br/><span style='font-size:12px;'>Simple graphic showing Dolomite 6.34% vs Aave 1.81% with a 1-click how-to. Cleanest growth lever.</span></li>
 <li style='margin-bottom:6px;'><span title="opus">🟣</span> ⭐ <strong>Berachain Rate Comparison Thread</strong><br/><span style='font-size:12px;'>USDC at 11.3%, WETH at 10.2%. Tag Berachain ecosystem accounts.</span></li></ul><details><summary>▸ 1 more</summary><ul style='padding-left:16px;'><li style='margin-bottom:6px;'><span title="codex">🟢</span> ⭐ <strong>Weekly Top 3 Yields Card</strong><br/><span style='font-size:12px;'>Recurring content: USDC (ARB) 6.34% / USD1 (ETH) 7.12% / USDC (BERA) 11.30%.</span></li></ul></details>
@@ -547,27 +582,26 @@ Zero borrows. Just pure, unadulterated yield farming on Dolomite.</p></div></det
 <p style='font-weight:700;margin:12px 0 6px;'>🤝 Business Development</p><ul style='padding-left:16px;'><li style='margin-bottom:6px;'>🔥 <strong>Confirm Greninja = Re7 Labs</strong><br/><span style='font-size:12px;'>Have Corey verify. If confirmed: co-marketing, exclusive USD1 vault integration, curator program.</span></li>
 <li style='margin-bottom:6px;'><span title="gemini">🔵</span> ⭐ <strong>Identify Beartic (Berachain whale)</strong><br/><span style='font-size:12px;'>Likely Avant strategy wallet. Ask: what caps/markets unlock more capital?</span></li></ul><details><summary>▸ 1 more</summary><ul style='padding-left:16px;'><li style='margin-bottom:6px;'><span title="gemini">🔵</span> ⭐ <strong>Arbitrum DAO Treasury Outreach</strong><br/><span style='font-size:12px;'>Target entities holding idle USDC on Arbitrum. 6.3% vs 1.8% = free money pitch.</span></li></ul></details>
 </div>
-  </div>
+  
+</div>
 
   <!-- ═══════ BD TARGETS ═══════ -->
   <div class="section-label">🎯 BD Targets</div>
-  <div class="grid">
-    <div class="card c-bd full">
-      <h2>🎯 Priority Outreach List</h2>
-<div style="display:grid;grid-template-columns:60px 1fr 100px 2fr;gap:8px;font-family:var(--font-mono);font-size:10px;color:var(--muted);padding:4px 0;border-bottom:1px solid var(--line);"><div>PRI</div><div>TARGET</div><div>TAG</div><div>RATIONALE</div></div>
-<div style="display:grid;grid-template-columns:60px 1fr 100px 2fr;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px;"><div>🔴 HIGH</div><div><a href="https://debank.com/profile/0x289c204b35859bfb924b9c0759a4fe80f610671c" target="_blank">Re7 Labs (greninja)</a></div><div><strong>INVESTIGATE</strong></div><div>$17.7M supply-only. Vault curator across Euler, Morpho, Aave. Pursue partnership.</div></div>
-<div style="display:grid;grid-template-columns:60px 1fr 100px 2fr;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px;"><div>🔴 HIGH</div><div><span title="gemini">🔵</span> <a href="https://debank.com/profile/0x6cc60a0b57e9dc27df08d41cf82277b67c031a24" target="_blank">Beartic</a></div><div><strong>INVESTIGATE</strong></div><div>$27M volume, likely Avant. Largest organic Berachain user.</div></div>
-<div style="display:grid;grid-template-columns:60px 1fr 100px 2fr;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px;"><div>🔴 HIGH</div><div><span title="codex">🟢</span> <a href="https://debank.com/profile/0x8be46b25d5b2ade9b12a63ec1a202d5f49a8e8a5" target="_blank">Genesect</a></div><div><strong>INVESTIGATE</strong></div><div>$103M total volume, 181 events. EIP-7702 bot. Ask: what tooling reduces liquidation anxiety?</div></div>
-<div style="display:grid;grid-template-columns:60px 1fr 100px 2fr;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px;"><div>🟡 MEDIUM</div><div><span title="codex">🟢</span> <a href="https://debank.com/profile/0x53cc1b407b5a0e65c7fdc2e85d7565210e3e0029" target="_blank">Aegislash</a></div><div><strong>INVESTIGATE</strong></div><div>Large LST loop. Would they use zap/virtual liquidity for rebalances?</div></div>
-<details><summary>▸ 2 more targets</summary><div style="display:grid;grid-template-columns:60px 1fr 100px 2fr;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px;"><div>🟡 MEDIUM</div><div><span title="gemini">🔵</span> <a href="https://debank.com/profile/0x972b46c928cbe68a8e50f0eebc21b5600ed9e0b7" target="_blank">Metagross</a></div><div><strong>NEW</strong></div><div>Clean case study for Dolomite-exclusive GM collateral leverage.</div></div>
-<div style="display:grid;grid-template-columns:60px 1fr 100px 2fr;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12px;"><div>🟡 MEDIUM</div><div><span title="opus">🟣</span> <a href="https://debank.com/profile/0xd480bb579f61edf044d0e86e33cb72310c816d6a" target="_blank">Volcarona</a></div><div><strong>NEW</strong></div><div>New USD1 depositor — $760K in 72h. Catch early before they scale.</div></div></details>
-</div>
-  </div>
+<div class="section-label">⚠️ Risk Assessment</div>
+<div class="grid">
 
-  <!-- ═══════ RISK (AT THE END) ═══════ -->
-  <div class="section-label">⚠️ Risk Assessment</div>
-  <div class="grid">
-    <div class="card c-risk full">
+    <div class="card c-bd">
+      <h2>🎯 Priority Outreach List</h2>
+<div style="padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;"><div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;">🔴 <strong><a href="https://debank.com/profile/0x289c204b35859bfb924b9c0759a4fe80f610671c" target="_blank">Re7 Labs (greninja)</a></strong> <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:var(--button-bg);font-family:var(--font-mono);">INVESTIGATE</span></div><div style="color:var(--muted);font-size:11px;">$17.7M supply-only. Vault curator across Euler, Morpho, Aave. Pursue partnership.</div></div>
+<div style="padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;"><div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;">🔴 <span title="gemini">🔵</span> <strong><a href="https://debank.com/profile/0x6cc60a0b57e9dc27df08d41cf82277b67c031a24" target="_blank">Beartic</a></strong> <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:var(--button-bg);font-family:var(--font-mono);">INVESTIGATE</span></div><div style="color:var(--muted);font-size:11px;">$27M volume, likely Avant. Largest organic Berachain user.</div></div>
+<div style="padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;"><div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;">🔴 <span title="codex">🟢</span> <strong><a href="https://debank.com/profile/0x8be46b25d5b2ade9b12a63ec1a202d5f49a8e8a5" target="_blank">Genesect</a></strong> <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:var(--button-bg);font-family:var(--font-mono);">INVESTIGATE</span></div><div style="color:var(--muted);font-size:11px;">$103M total volume, 181 events. EIP-7702 bot. Ask: what tooling reduces liquidation anxiety?</div></div>
+<div style="padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;"><div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;">🟡 <span title="codex">🟢</span> <strong><a href="https://debank.com/profile/0x53cc1b407b5a0e65c7fdc2e85d7565210e3e0029" target="_blank">Aegislash</a></strong> <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:var(--button-bg);font-family:var(--font-mono);">INVESTIGATE</span></div><div style="color:var(--muted);font-size:11px;">Large LST loop. Would they use zap/virtual liquidity for rebalances?</div></div>
+<details><summary>▸ 2 more targets</summary><div style="padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;"><div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;">🟡 <span title="gemini">🔵</span> <strong><a href="https://debank.com/profile/0x972b46c928cbe68a8e50f0eebc21b5600ed9e0b7" target="_blank">Metagross</a></strong> <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:var(--button-bg);font-family:var(--font-mono);">NEW</span></div><div style="color:var(--muted);font-size:11px;">Clean case study for Dolomite-exclusive GM collateral leverage.</div></div>
+<div style="padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;"><div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;">🟡 <span title="opus">🟣</span> <strong><a href="https://debank.com/profile/0xd480bb579f61edf044d0e86e33cb72310c816d6a" target="_blank">Volcarona</a></strong> <span style="font-size:10px;padding:1px 6px;border-radius:3px;background:var(--button-bg);font-family:var(--font-mono);">NEW</span></div><div style="color:var(--muted);font-size:11px;">New USD1 depositor — $760K in 72h. Catch early before they scale.</div></div></details>
+</div>
+  
+
+    <div class="card c-risk">
       <h2>⚠️ Risk Radar</h2>
 <div style="padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin:6px 0;">
   <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-family:var(--font-mono);background:#ff4444;color:#000;font-weight:700;">CRITICAL</span> <strong>USDC (ETH) Utilization at 90.1%</strong></div>
@@ -606,7 +640,8 @@ Zero borrows. Just pure, unadulterated yield farming on Dolomite.</p></div></det
   <p style="font-size:11px;color:var(--teal);margin:2px 0;">💡 Monitor and consider proactive outreach.</p>
 </div></details>
 </div>
-  </div>
+  
+</div>
 
   <div class="footer">
     <span>🟣 Opus (strategic depth)</span>
