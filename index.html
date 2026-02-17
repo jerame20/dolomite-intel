@@ -198,25 +198,11 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 /* ── Responsive newspaper grid ── */
 .grid {
   display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 14px !important;
-  margin-bottom: 14px;
-}
-@media (min-width: 768px) {
-  .grid { grid-template-columns: repeat(2, 1fr) !important; }
-}
-@media (min-width: 1200px) {
-  .grid { grid-template-columns: repeat(3, 1fr) !important; }
-}
-@media (min-width: 1800px) {
-  .grid { grid-template-columns: repeat(4, 1fr) !important; }
+  grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr)) !important;
+  gap: 16px !important;
+  margin-bottom: 16px;
 }
 .full { grid-column: 1 / -1 !important; }
-.span-2 { grid-column: span 2; }
-@media (max-width: 767px) { .span-2 { grid-column: span 1; } }
-.span-3 { grid-column: span 3; }
-@media (max-width: 1199px) { .span-3 { grid-column: span 1; } }
-@media (min-width: 1200px) { .span-3 { grid-column: span 3; } }
 
 /* Remove old max-width so cards can fill grid cells */
 .card {
@@ -225,6 +211,7 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
   padding: 20px 24px;
   border-radius: 12px;
   overflow: hidden;
+  min-width: 0;
 }
 .card > * { max-width: 100%; }
 .card p { line-height: 1.6; margin: 0 0 8px 0; }
@@ -244,7 +231,17 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 .flow-net { text-align: center; font-family: var(--font-mono); font-size: 16px; font-weight: 700; margin: 4px 0 8px; }
 
 /* ── Section label spanning ── */
-.section-label { grid-column: 1 / -1; }
+.section-label { grid-column: 1 / -1; margin-top: 28px; margin-bottom: 4px; }
+
+/* ── Polish ── */
+.card h2 { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+
+/* Max-width wrapper for ultra-wide readability */
+.grid, .section-label { max-width: 1600px; margin-left: auto; margin-right: auto; }
+
+/* Extra chain tags */
+.tag-mnt { background: #1a1a2e; color: #6be585; border: 1px solid #6be585; padding: 1px 6px; border-radius: 4px; font-size: 9px; font-family: var(--font-mono); }
+.tag-bot { background: #1a1a2e; color: #ff8c42; border: 1px solid #ff8c42; padding: 1px 6px; border-radius: 4px; font-size: 9px; font-family: var(--font-mono); }
 
 @media (max-width: 900px) {
   .anoms-grid { grid-template-columns: 1fr !important; }
@@ -257,7 +254,7 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 
   <div class="topbar">
     <div class="badges">
-      <span class="badge">Internal · Feb 16, 2026</span>
+      <span class="badge">Internal · Feb 17, 2026</span>
       <span class="badge">🟣 Opus · 🟢 Codex · 🔵 Gemini</span>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
@@ -275,7 +272,7 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
   <div class="masthead">
     <h1>DOLOMITE INTELLIGENCE</h1>
     <div class="sub">3-Model Synthesis · Core Team Brief</div>
-    <div class="meta">February 16, 2026 &nbsp;|&nbsp; <a href="https://docs.google.com/spreadsheets/d/17FPVWjpq3vZ8vVCWwLaJvrybq597pNQvCfCTmTxN25A" target="_blank">Whale Registry ↗</a></div>
+    <div class="meta">February 17, 2026 &nbsp;|&nbsp; <a href="https://docs.google.com/spreadsheets/d/17FPVWjpq3vZ8vVCWwLaJvrybq597pNQvCfCTmTxN25A" target="_blank">Whale Registry ↗</a></div>
   </div>
 
   <!-- ═══════ TVL HERO WITH CHAIN BREAKDOWN ═══════ -->
@@ -325,12 +322,12 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
   <div class="grid">
     <div class="card c-break full">
       <h2>⚡ What Stuck Out This Week</h2>
-<div class="anoms-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;"><div class="mini-card" style="padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--card);"><p style="margin:0 0 8px 0;font-weight:900;">🔴 Critical</p><ul style='padding-left:16px;'><li style='margin-bottom:8px;'>🔴 <strong>USDC (ETH) Utilization at 90.1%</strong> <span class="tag-chain tag-eth">ETHE</span><br/><span style='font-size:12px;color:var(--text);'>Only $10.9M available for withdrawal. Rate volatility will persist.</span></li>
+<div class="anoms-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;"><div class="mini-card" style="padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--card);"><p style="margin:0 0 8px 0;font-weight:900;">🔴 Critical</p><ul style='padding-left:16px;'><li style='margin-bottom:8px;'>🔴 <strong>USDC (ETH) Utilization at 90.1%</strong> <span class="tag-chain tag-eth">ETH</span><br/><span style='font-size:12px;color:var(--text);'>Only $10.9M available for withdrawal. Rate volatility will persist.</span></li>
 <li style='margin-bottom:8px;'><span title="codex">🟢</span> 🔴 <strong>WBERA at 82% util, 99% borrow rate</strong> <span class="tag-chain tag-bera">BERA</span><br/><span style='font-size:12px;color:var(--text);'>Feb 11 crash triggered cascade. If util hits 100%, liquidations pause.</span></li>
 <li style='margin-bottom:8px;'><span title="gemini">🔵</span> 🟡 <strong>iBERA at 98.5% util — nearly frozen</strong> <span class="tag-chain tag-bera">BERA</span><br/><span style='font-size:12px;color:var(--text);'>192% borrow rate. Market effectively tapped out.</span></li></ul>
-<details><summary>▸ 1 more</summary><ul style='padding-left:16px;'><li style='margin-bottom:8px;'><span title="opus">🟣</span> 🟡 <strong>USDT (ETH) util at 82.8%</strong> <span class="tag-chain tag-eth">ETHE</span><br/><span style='font-size:12px;color:var(--text);'>Rate curve may need adjustment — supply APY lower than USDC despite higher util.</span></li></ul></details></div><div class="mini-card" style="padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--card);"><p style="margin:0 0 8px 0;font-weight:900;">🐋 Whale Moves</p><ul style='padding-left:16px;'><li style='margin-bottom:8px;'>🟢 <strong>Re7 Labs (greninja) deposited $5.68M USD1</strong> <span class="tag-chain tag-eth">ETHE</span><br/><span style='font-size:12px;color:var(--text);'>19 separate transactions over 72h. Vault curator behavior — programmatic deposits every few hours.</span></li>
-<li style='margin-bottom:8px;'><span title="opus">🟣</span> 🟢 <strong>Genesect churned $17.4M in LST rotations</strong> <span class="tag-chain tag-eth">ETHE</span><br/><span style='font-size:12px;color:var(--text);'>29 transactions — constant wstETH/weETH rebalancing. Running at 87.3% LTV.</span></li>
-<li style='margin-bottom:8px;'><span title="codex">🟢</span> 🟢 <strong>Massive USD1 outflows Feb 9</strong> <span class="tag-chain tag-eth">ETHE</span><br/><span style='font-size:12px;color:var(--text);'>Raikou ($3M), Koraidon ($1.8M) — carry trade unwinds as spread narrowed.</span></li></ul></div><div class="mini-card" style="padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--card);"><p style="margin:0 0 8px 0;font-weight:900;">📊 Patterns</p><ul style='padding-left:16px;'><li style='margin-bottom:8px;'>🟢 <strong>ETH LST leverage loops dominant</strong><br/><span style='font-size:12px;color:var(--text);'>Genesect + Aegislash + Mimikyu running wstETH/weETH loops. Dolomite&#x27;s margin UX should win here.</span></li>
+<details><summary>▸ 1 more</summary><ul style='padding-left:16px;'><li style='margin-bottom:8px;'><span title="opus">🟣</span> 🟡 <strong>USDT (ETH) util at 82.8%</strong> <span class="tag-chain tag-eth">ETH</span><br/><span style='font-size:12px;color:var(--text);'>Rate curve may need adjustment — supply APY lower than USDC despite higher util.</span></li></ul></details></div><div class="mini-card" style="padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--card);"><p style="margin:0 0 8px 0;font-weight:900;">🐋 Whale Moves</p><ul style='padding-left:16px;'><li style='margin-bottom:8px;'>🟢 <strong>Re7 Labs (greninja) deposited $5.68M USD1</strong> <span class="tag-chain tag-eth">ETH</span><br/><span style='font-size:12px;color:var(--text);'>19 separate transactions over 72h. Vault curator behavior — programmatic deposits every few hours.</span></li>
+<li style='margin-bottom:8px;'><span title="opus">🟣</span> 🟢 <strong>Genesect churned $17.4M in LST rotations</strong> <span class="tag-chain tag-eth">ETH</span><br/><span style='font-size:12px;color:var(--text);'>29 transactions — constant wstETH/weETH rebalancing. Running at 87.3% LTV.</span></li>
+<li style='margin-bottom:8px;'><span title="codex">🟢</span> 🟢 <strong>Massive USD1 outflows Feb 9</strong> <span class="tag-chain tag-eth">ETH</span><br/><span style='font-size:12px;color:var(--text);'>Raikou ($3M), Koraidon ($1.8M) — carry trade unwinds as spread narrowed.</span></li></ul></div><div class="mini-card" style="padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--card);"><p style="margin:0 0 8px 0;font-weight:900;">📊 Patterns</p><ul style='padding-left:16px;'><li style='margin-bottom:8px;'>🟢 <strong>ETH LST leverage loops dominant</strong><br/><span style='font-size:12px;color:var(--text);'>Genesect + Aegislash + Mimikyu running wstETH/weETH loops. Dolomite&#x27;s margin UX should win here.</span></li>
 <li style='margin-bottom:8px;'><span title="opus">🟣</span> 🟢 <strong>USD1 carry is the dominant stable strategy</strong><br/><span style='font-size:12px;color:var(--text);'>WLFI + multiple mid-size clones. USD1 is now a protocol-level product line.</span></li>
 <li style='margin-bottom:8px;'>🟢 <strong>Net capital flow: +$8.2M</strong><br/><span style='font-size:12px;color:var(--text);'>More money coming in than going out across all chains. Protocol is growing.</span></li></ul></div></div>
 </div>
@@ -420,7 +417,7 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 <div id="rates-table" class="rates-leaderboard">
   <div class="rr" style="border-bottom:1px solid var(--line);margin-bottom:8px;padding-bottom:6px;cursor:pointer;" onclick="sortRates()">    <span class="a" style="font-size:10px;color:var(--muted);letter-spacing:0.5px;">MARKET</span>    <span class="y" style="font-size:10px;color:var(--muted);letter-spacing:0.5px;" title="Click to sort">APY ↕</span>    <span class="v" style="font-size:10px;color:var(--muted);letter-spacing:0.5px;">TVL · UTIL</span>  </div>
 <div class="rr" data-apy="79.900000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-bot">BOT</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">USDC.e</span>    <span style="font-size:11px;color:var(--muted);">$3.3M · 5.3%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">79.90%</span>
 </div>
@@ -451,52 +448,52 @@ html[data-theme="cyberpunk"] select { background:rgba(13,2,33,0.8); border-color
 </div>
 <details><summary style="cursor:pointer;color:var(--teal);font-size:12px;font-family:var(--font-mono);padding:6px 0;">▸ Show 11 more markets</summary>
 <div class="rr" data-apy="7.116000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-eth">ETHE</span></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-eth">ETH</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">USD1</span>    <span style="font-size:11px;color:var(--muted);">$167.4M · 65.7%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">7.12%</span>
 </div>
 <div class="rr" data-apy="6.495000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-mnt">MNT</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">USDT</span>    <span style="font-size:11px;color:var(--muted);">$15.2K · 70.1%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">6.50%</span>
 </div>
 <div class="rr" data-apy="6.340000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARBI</span></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARB</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">USDC</span>    <span style="font-size:11px;color:var(--muted);">$6.6M · 56.0%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">6.34%</span>
 </div>
 <div class="rr" data-apy="5.500000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARBI</span></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARB</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">MIM</span>    <span style="font-size:11px;color:var(--muted);">$1.4K · 69.7%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">5.50%</span>
 </div>
 <div class="rr" data-apy="5.026000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-eth">ETHE</span></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-eth">ETH</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">USDC</span>    <span style="font-size:11px;color:var(--muted);">$110.6M · 90.1%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">5.03%</span>
 </div>
 <div class="rr" data-apy="4.001000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARBI</span></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARB</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">USDT</span>    <span style="font-size:11px;color:var(--muted);">$550.1K · 65.1%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">4.00%</span>
 </div>
 <div class="rr" data-apy="3.834000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARBI</span></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARB</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">DAI</span>    <span style="font-size:11px;color:var(--muted);">$45.0K · 58.2%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">3.83%</span>
 </div>
 <div class="rr" data-apy="3.619000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-eth">ETHE</span></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-eth">ETH</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">USDT</span>    <span style="font-size:11px;color:var(--muted);">$4.3M · 82.8%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">3.62%</span>
 </div>
 <div class="rr" data-apy="3.414000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-mnt">MNT</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">USDC</span>    <span style="font-size:11px;color:var(--muted);">$1.5K · 50.9%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">3.41%</span>
 </div>
 <div class="rr" data-apy="3.345000" style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:6px 0;">
-  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARBI</span></span>
+  <span class="a" style="display:flex;align-items:center;gap:8px;min-width:110px;"><span class="tag-chain tag-arb">ARB</span></span>
   <span class="v" style="display:flex;flex-direction:column;gap:2px;">    <span style="font-weight:700;font-size:14px;color:var(--text);">USDC.e</span>    <span style="font-size:11px;color:var(--muted);">$163.2K · 59.5%</span>  </span>
   <span class="y" style="font-weight:900;font-size:20px;color:var(--lime);text-align:right;min-width:88px;">3.35%</span>
 </div>
@@ -717,7 +714,7 @@ function closeFb() { document.getElementById('fb-overlay').classList.remove('ope
 
 function saveFeedback(section, name, text) {
   const fb = JSON.parse(localStorage.getItem(FB_KEY) || '[]');
-  const entry = { ts: new Date().toISOString(), section, name: name || 'Anonymous', text, report: 'Feb 16, 2026' };
+  const entry = { ts: new Date().toISOString(), section, name: name || 'Anonymous', text, report: 'Feb 17, 2026' };
   fb.push(entry);
   localStorage.setItem(FB_KEY, JSON.stringify(fb));
   // Send to Google Sheet via Apps Script (GET with query params to avoid redirect issues)
